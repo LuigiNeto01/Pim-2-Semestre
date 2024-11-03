@@ -7,11 +7,16 @@
 #include "utils.h"
 #include "components/ascii.h"
 
+// Função para cadastrar um produto no CSV com id_produto automático
 int cadastrar_produto(const char *nome_item, const char *tipo, float preco, const char *validade, const char *unidade_medida, const char *valor_nutricional){
     // Define o locale para garantir que caracteres especiais e acentos sejam tratados corretamente
     setlocale(LC_ALL, "");
-    char cwd[1024];
-    char caminho_arquivo[2048]; // Variável para armazenar o caminho completo do arquivo
+    
+    // Declaração de variáveis
+    char cwd[1024], linha[1024], caminho_arquivo[2048]; // Variável para armazenar o caminho completo do arquivo
+    int max_id = 0, id_atual, novo_id;
+    char *token;
+    FILE *arquivo;
 
     // Obter o diretório atual
     if (getcwd(cwd, sizeof(cwd)) != NULL) {
@@ -19,18 +24,41 @@ int cadastrar_produto(const char *nome_item, const char *tipo, float preco, cons
         snprintf(caminho_arquivo, sizeof(caminho_arquivo), "%s/data/produtos.csv", cwd);
     }
     else{
-        printf("Erro ao obter o caminho");
+        printf("Erro ao obter o caminho\n");
+        return -1;
     }
 
-    // Abre o arquivo em modo de anexação (append)
-    FILE *arquivo = fopen(caminho_arquivo, "a+");
+    // Abre o arquivo em modo de leitura e anexação (read and append)
+    arquivo = fopen(caminho_arquivo, "a+");
     if (arquivo == NULL) {
         perror("Erro ao abrir o arquivo produtos.csv");
         return -1;
     }
 
-    // Escreve os dados no formato CSV separado por ponto e vírgula
-    fprintf(arquivo, "%s;%s;%.2f;%s;%s;%s\n", 
+    // Move o ponteiro para o início do arquivo para ler
+    rewind(arquivo);
+
+    // Lê cada linha para encontrar o maior id_produto
+    while (fgets(linha, sizeof(linha), arquivo)) {
+        // Ignora linhas vazias
+        if (strlen(linha) <= 1) continue;
+
+        // Usa strtok para separar os campos pelo delimitador ';'
+        token = strtok(linha, ";");
+        if(token != NULL){
+            id_atual = atoi(token);
+            if(id_atual > max_id){
+                max_id = id_atual;
+            }
+        }
+    }
+
+    // Define o próximo id_produto
+    novo_id = max_id + 1;
+
+    // Escreve os dados no formato CSV separado por ponto e vírgula, incluindo o id_produto
+    fprintf(arquivo, "%d;%s;%s;%.2f;%s;%s;%s\n", 
+            novo_id, 
             nome_item, 
             tipo, 
             preco, 
@@ -47,19 +75,21 @@ int cadastrar_produto(const char *nome_item, const char *tipo, float preco, cons
     return 0; // Sucesso
 }
 
+// Função para capturar a validade do produto no formato DD/MM/AAAA
 void capturaValidade(char *validade) {
+    // Declaração de variáveis
     int i = 0;
     char c;
-    
+
     while (i < 10) {
         c = getch(); // Captura um caractere sem exibir na tela
-        
+
         if (i == 2 || i == 5) {
             // Insere as barras '/' automaticamente
             validade[i++] = '/';
             printf("/");
         }
-        
+
         // Verifica se o caractere é um número (dígito)
         if (c >= '0' && c <= '9') {
             validade[i++] = c;
@@ -71,13 +101,14 @@ void capturaValidade(char *validade) {
 
 // Função auxiliar para capturar e validar o preço
 float capturaPreco() {
+    // Declaração de variáveis
+    int j, i = 0, ponto = 0;
     char preco_str[20];
-    int i = 0, ponto = 0;
     char c;
 
     while (1) {
         c = getch(); // Captura um caractere sem exibir na tela
-        
+
         if (c == '\r') { // Enter pressionado
             if (i == 0) {
                 // Nenhum caractere digitado
@@ -89,7 +120,7 @@ float capturaPreco() {
             }
             break;
         }
-        
+
         if (c == 8) { // Backspace
             if (i > 0) {
                 i--;
@@ -115,7 +146,7 @@ float capturaPreco() {
     preco_str[i] = '\0';
 
     // Substitui a vírgula por ponto para conversão
-    for(int j = 0; j < i; j++) {
+    for(j = 0; j < i; j++) {
         if(preco_str[j] == ',') {
             preco_str[j] = '.';
             break;
@@ -124,9 +155,16 @@ float capturaPreco() {
     return atof(preco_str);
 }
 
+// Função para realizar o cadastro do produto com interface de usuário
 void cadastro_produto(){
-    char nome_item[50], tipo[50], validade[11], unidade_medida[50], valor_nutricional[50];
+    // Declaração de variáveis
+    char nome_item[50];
+    char tipo[50];
+    char validade[11];
+    char unidade_medida[50];
+    char valor_nutricional[50];
     float preco;
+    int resultado;
 
     system("cls"); // Limpa a tela (Windows)
     Ascii(3);
@@ -194,7 +232,8 @@ void cadastro_produto(){
     valor_nutricional[strcspn(valor_nutricional, "\n")] = '\0';
 
     // Chamada à função de cadastro do produto
-    if (cadastrar_produto(nome_item, tipo, preco, validade, unidade_medida, valor_nutricional) == 0) {
+    resultado = cadastrar_produto(nome_item, tipo, preco, validade, unidade_medida, valor_nutricional);
+    if (resultado == 0) {
         printf("Produto cadastrado com sucesso!\n");
     } else {
         printf("Falha ao cadastrar o produto.\n");
