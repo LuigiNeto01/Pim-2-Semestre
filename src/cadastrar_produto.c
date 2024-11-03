@@ -8,7 +8,7 @@
 #include "components/ascii.h"
 
 // Função para cadastrar um produto no CSV com id_produto automático
-int cadastrar_produto(const char *nome_item, const char *tipo, float preco, const char *validade, const char *unidade_medida, const char *valor_nutricional){
+int cadastrar_produto(const char *nome_item, const char *tipo, float preco_venda, float preco_compra, const char *validade, const char *unidade_medida, const char *valor_nutricional, float volume){
     // Declaração de variáveis
     char cwd[1024], linha[1024], caminho_arquivo[2048]; // Variável para armazenar o caminho completo do arquivo
     int max_id = 0, id_atual, novo_id;
@@ -54,14 +54,16 @@ int cadastrar_produto(const char *nome_item, const char *tipo, float preco, cons
     novo_id = max_id + 1;
 
     // Escreve os dados no formato CSV separado por ponto e vírgula, incluindo o id_produto
-    fprintf(arquivo, "%d;%s;%s;%.2f;%s;%s;%s\n", 
-            novo_id, 
-            nome_item, 
-            tipo, 
-            preco, 
-            validade, 
-            unidade_medida, 
-            valor_nutricional);
+    fprintf(arquivo, "%d;%s;%s;%.2f;%.2f;%s;%s;%s;0;%.2f\n",
+            novo_id,
+            nome_item,
+            tipo,
+            preco_venda,
+            preco_compra,
+            validade,
+            unidade_medida,
+            valor_nutricional,
+            volume);
 
     // Fecha o arquivo
     if (fclose(arquivo) != 0) {
@@ -133,10 +135,10 @@ void cadastro_produto(){
     // Declaração de variáveis
     char nome_item[50];
     char tipo[50];
-    char validade[11];
     char unidade_medida[50];
     char valor_nutricional[50];
-    float preco;
+    char validade[50];
+    float preco_compra, preco_venda, volume;
     int resultado;
 
     system("cls"); // Limpa a tela (Windows)
@@ -152,9 +154,9 @@ void cadastro_produto(){
     printf("║ Digite o Tipo do Produto:                                                          ║\n");
     printf("╚════════════════════════════════════════════════════════════════════════════════════╝\n");
 
-    // Interface para Preço do Produto
+    // Interface para Validade do Produto
     printf("╔════════════════════════════════════════════════════════════════════════════════════╗\n"); 
-    printf("║ Digite o Preço do Produto: R$                                                      ║\n");
+    printf("║ Digite a Validade do Produto em Dias:                                              ║\n");
     printf("╚════════════════════════════════════════════════════════════════════════════════════╝\n");
 
     // Obter o nome do produto
@@ -167,17 +169,18 @@ void cadastro_produto(){
     fgets(tipo, sizeof(tipo), stdin);
     tipo[strcspn(tipo, "\n")] = '\0';
 
-    // Obter o preço do produto com validação
-    gotoxy(32, 15); 
-    preco = capturaPreco();
-
+    // Obter a validade do produto
+    gotoxy(40, 15); 
+    fgets(validade, sizeof(validade), stdin);
+    validade[strcspn(validade, "\n")] = '\0';
+    
     // Limpar para manter apenas 3 itens por vez na tela
     system("cls");
     Ascii(3);
 
-    // Interface para Validade do Produto
+    // Interface para Valor Nutricional do Produto
     printf("╔════════════════════════════════════════════════════════════════════════════════════╗\n"); 
-    printf("║ Digite a Validade do Produto em Dias:                                              ║\n");
+    printf("║ Digite o Valor Nutricional do Produto:                                             ║\n");
     printf("╚════════════════════════════════════════════════════════════════════════════════════╝\n");
 
     // Interface para Unidade de Medida do Produto
@@ -185,27 +188,49 @@ void cadastro_produto(){
     printf("║ Digite a Unidade de Medida do Produto:                                             ║\n");
     printf("╚════════════════════════════════════════════════════════════════════════════════════╝\n");
 
-    // Interface para Valor Nutricional do Produto
-    printf("╔════════════════════════════════════════════════════════════════════════════════════╗\n"); 
-    printf("║ Digite o Valor Nutricional do Produto:                                             ║\n");
-    printf("╚════════════════════════════════════════════════════════════════════════════════════╝\n");
-
-    // Obter a validade do produto
-    gotoxy(39, 9); 
-    scanf("%d", &validade);
-
+    // Obter o valor nutricional do produto
+    gotoxy(41, 9); 
+    fgets(valor_nutricional, sizeof(valor_nutricional), stdin);
+    valor_nutricional[strcspn(valor_nutricional, "\n")] = '\0';
+    
     // Obter a unidade de medida do produto
     gotoxy(41, 12); 
     fgets(unidade_medida, sizeof(unidade_medida), stdin);
     unidade_medida[strcspn(unidade_medida, "\n")] = '\0';
 
-    // Obter o valor nutricional do produto
-    gotoxy(41, 15); 
-    fgets(valor_nutricional, sizeof(valor_nutricional), stdin);
-    valor_nutricional[strcspn(valor_nutricional, "\n")] = '\0';
+    // Limpar para manter apenas 3 itens por vez na tela
+    system("cls");
+    Ascii(3);
+
+    // Interface para Preco de Compra do Produto
+    printf("╔════════════════════════════════════════════════════════════════════════════════════╗\n"); 
+    printf("║ Digite o Preço de Compra do Produto: R$                                            ║\n");
+    printf("╚════════════════════════════════════════════════════════════════════════════════════╝\n");
+
+    // Interface para Preco de Venda do Produto
+    printf("╔════════════════════════════════════════════════════════════════════════════════════╗\n"); 
+    printf("║ Digite o Preço de Venda do Produto: R$                                             ║\n");
+    printf("╚════════════════════════════════════════════════════════════════════════════════════╝\n");
+
+    // Intyerface para Volume do Produto
+    printf("╔════════════════════════════════════════════════════════════════════════════════════╗\n"); 
+    printf("║ Digite o Volume do Produto (m³):                                                   ║\n");
+    printf("╚════════════════════════════════════════════════════════════════════════════════════╝\n");
+
+    // Obter o preço comrpa do produto com validação
+    gotoxy(42, 9);
+    preco_compra = capturaPreco();
+
+    // Obter o preço venda do produto com validação
+    gotoxy(41, 12);
+    preco_venda = capturaPreco();
+
+    // Obter o volume do produto
+    gotoxy(34, 15);
+    volume = capturaPreco(); // sim, eu estou utilizando assim pq fiquei com preguica de renomear, mas funcio igual kk
 
     // Chamada à função de cadastro do produto
-    resultado = cadastrar_produto(nome_item, tipo, preco, validade, unidade_medida, valor_nutricional);
+    resultado = cadastrar_produto(nome_item, tipo, preco_venda, preco_compra, validade, unidade_medida, valor_nutricional, volume);
     if (resultado == 0) {
         printf("Produto cadastrado com sucesso!\n");
     } else {

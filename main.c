@@ -23,27 +23,28 @@ int exibir_menu(int login_resultado) {
     if (login_resultado == 1) {
         num_opcoes = 7;
     }
+
+    system("cls"); // Limpa a tela a cada exibição do menu
+    Ascii(1);
+
+    printf("╔════════════════════════════════╗\n");
+    printf("║      *Escolha uma opção*       ║\n");
+    printf("║~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~║\n");
+    printf("║    1- Vendas                   ║\n");
+    printf("║    2- Registros                ║\n");
+    printf("║    3- Cadastrar produtos       ║\n");
+    printf("║    4- Dashboards               ║\n");
+    printf("║    5- Avisos                   ║\n");
+    printf("║    6- Sair                     ║\n");
+    if(login_resultado == 1){
+        printf("║    7- Cadastrar funcionários   ║\n");
+    }
+    printf("║~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~║\n");
+    printf("╚════════════════════════════════╝\n");
     
     while (1) {
         // Oculta o cursor
         ocultar_cursor();
-        system("cls"); // Limpa a tela a cada exibição do menu
-        Ascii(1);
-
-        printf("╔════════════════════════════════╗\n");
-        printf("║      *Escolha uma opção*       ║\n");
-        printf("║~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~║\n");
-        printf("║    1- Vendas                   ║\n");
-        printf("║    2- Registros                ║\n");
-        printf("║    3- Cadastrar produtos       ║\n");
-        printf("║    4- Dashboards               ║\n");
-        printf("║    5- Avisos                   ║\n");
-        printf("║    6- Sair                     ║\n");
-        if(login_resultado == 1){
-            printf("║    7- Cadastrar funcionários   ║\n");
-        }
-        printf("║~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~║\n");
-        printf("╚════════════════════════════════╝\n");
 
         // Exibe o cursor '>' na opção atual
         for (int i = 1; i <= num_opcoes; i++) {
