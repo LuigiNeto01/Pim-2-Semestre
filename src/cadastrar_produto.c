@@ -9,9 +9,6 @@
 
 // Função para cadastrar um produto no CSV com id_produto automático
 int cadastrar_produto(const char *nome_item, const char *tipo, float preco, const char *validade, const char *unidade_medida, const char *valor_nutricional){
-    // Define o locale para garantir que caracteres especiais e acentos sejam tratados corretamente
-    setlocale(LC_ALL, "");
-    
     // Declaração de variáveis
     char cwd[1024], linha[1024], caminho_arquivo[2048]; // Variável para armazenar o caminho completo do arquivo
     int max_id = 0, id_atual, novo_id;
@@ -73,30 +70,6 @@ int cadastrar_produto(const char *nome_item, const char *tipo, float preco, cons
     }
 
     return 0; // Sucesso
-}
-
-// Função para capturar a validade do produto no formato DD/MM/AAAA
-void capturaValidade(char *validade) {
-    // Declaração de variáveis
-    int i = 0;
-    char c;
-
-    while (i < 10) {
-        c = getch(); // Captura um caractere sem exibir na tela
-
-        if (i == 2 || i == 5) {
-            // Insere as barras '/' automaticamente
-            validade[i++] = '/';
-            printf("/");
-        }
-
-        // Verifica se o caractere é um número (dígito)
-        if (c >= '0' && c <= '9') {
-            validade[i++] = c;
-            printf("%c", c); // Exibe o caractere capturado
-        }
-    }
-    validade[i] = '\0'; // Finaliza a string com o caractere nulo
 }
 
 // Função auxiliar para capturar e validar o preço
@@ -204,7 +177,7 @@ void cadastro_produto(){
 
     // Interface para Validade do Produto
     printf("╔════════════════════════════════════════════════════════════════════════════════════╗\n"); 
-    printf("║ Digite a Validade do Produto: __/__/____                                           ║\n");
+    printf("║ Digite a Validade do Produto em Dias:                                              ║\n");
     printf("╚════════════════════════════════════════════════════════════════════════════════════╝\n");
 
     // Interface para Unidade de Medida do Produto
@@ -218,8 +191,8 @@ void cadastro_produto(){
     printf("╚════════════════════════════════════════════════════════════════════════════════════╝\n");
 
     // Obter a validade do produto
-    gotoxy(32, 9); 
-    capturaValidade(validade);
+    gotoxy(39, 9); 
+    scanf("%d", &validade);
 
     // Obter a unidade de medida do produto
     gotoxy(41, 12); 

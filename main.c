@@ -10,10 +10,12 @@
 #include "src/utils.c"
 #include "src/cadastrar_produto.c"
 #include "src/exibir_produtos.c"
+#include "src/venda.c"
 
-void tela_menu(int login_resultado) {
+// Função para exibir o menu e retornar a opção selecionada
+int exibir_menu(int login_resultado) {
     int escolha = 1; // Índice inicial
-    int opcao_selecionada;
+    int opcao_selecionada = 1;
     int num_opcoes = 6;
     int linha_inicial = 10;
 
@@ -22,29 +24,30 @@ void tela_menu(int login_resultado) {
         num_opcoes = 7;
     }
     
-    Ascii(1);
-    // Oculta o cursor
-    ocultar_cursor();
-
-    printf("╔════════════════════════════════╗\n");
-    printf("║      *Escolha uma opção*       ║\n");
-    printf("║~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~║\n");
-    printf("║    1- Vendas                   ║\n");
-    printf("║    2- Registros                ║\n");
-    printf("║    3- Cadastrar produtos       ║\n");
-    printf("║    4- Dashboards               ║\n");
-    printf("║    5- Avisos                   ║\n");
-    printf("║    6- Sair                     ║\n");
-    if(login_resultado == 1){
-        printf("║    7- Cadastrar funcionarios   ║\n");
-    }
-    printf("║~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~║\n");
-    printf("╚════════════════════════════════╝\n");
-
     while (1) {
-        // Atualiza o cursor '>' com base na linha inicial
+        // Oculta o cursor
+        ocultar_cursor();
+        system("cls"); // Limpa a tela a cada exibição do menu
+        Ascii(1);
+
+        printf("╔════════════════════════════════╗\n");
+        printf("║      *Escolha uma opção*       ║\n");
+        printf("║~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~║\n");
+        printf("║    1- Vendas                   ║\n");
+        printf("║    2- Registros                ║\n");
+        printf("║    3- Cadastrar produtos       ║\n");
+        printf("║    4- Dashboards               ║\n");
+        printf("║    5- Avisos                   ║\n");
+        printf("║    6- Sair                     ║\n");
+        if(login_resultado == 1){
+            printf("║    7- Cadastrar funcionários   ║\n");
+        }
+        printf("║~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~║\n");
+        printf("╚════════════════════════════════╝\n");
+
+        // Exibe o cursor '>' na opção atual
         for (int i = 1; i <= num_opcoes; i++) {
-            gotoxy(2, linha_inicial + i); // Mover para a linha da opção com o deslocamento
+            gotoxy(2, linha_inicial + i); // Move para a posição da opção
             printf("%c", (escolha == i ? '>' : ' '));
         }
 
@@ -62,45 +65,71 @@ void tela_menu(int login_resultado) {
             opcao_selecionada = escolha;
             break; // Sair do loop ao selecionar a opção
         }
-    }   
+
+        // Atualiza o cursor '>' com base na nova escolha
+        for (int i = 1; i <= num_opcoes; i++) {
+            gotoxy(2, linha_inicial + i); // Move para a posição da opção
+            printf("%c", (escolha == i ? '>' : ' '));
+        }
+    }
+
     mostrar_cursor();
 
-    switch (escolha) {
-        case 1:
-            // Função ou código para Vendas
-            break;
-        case 2:
-            exibir_tabela();
-            break;
-        case 3:
-            // Função para Cadastrar produtos
-            cadastro_produto();
-            break;
-        case 4:
-            // Função ou código para Dashboards
-            break;
-        case 5:
-            // Função ou código para Avisos
-            break;
-        case 6:
-            system("main");
-            break;
-        case 7:
-
-            break;
-        default:
-
-            break;
-    }
+    return opcao_selecionada;
 }
 
 int main() {
     int login_resultado;
-    system("chcp 65001");
+    system("chcp 65001"); // Configura o código de página para UTF-8
 
-    login_resultado = login();
-    system("cls"); 
-    tela_menu(login_resultado);
+    while (1) {
+        // Realiza o login
+        login_resultado = login();
+        system("cls");
+
+        if (login_resultado == 0) {
+            return 1;
+        }
+
+        // Loop principal do software
+        while (1) {
+            int escolha = exibir_menu(login_resultado);
+
+            switch (escolha) {
+                case 1:
+                    venda();
+                    break;
+                case 2:
+                    exibir_tabela();
+                    break;
+                case 3:
+                    cadastro_produto();
+                    break;
+                case 4:
+                    // Função ou código para Dashboards
+                    printf("Funcionalidade Dashboards não implementada.\n");
+                    break;
+                case 5:
+                    // Função ou código para Avisos
+                    printf("Funcionalidade Avisos não implementada.\n");
+                    break;
+                case 6:
+                    system("cls");
+                    break; // Sai do loop interno para retornar ao login
+                case 7:
+                    if (login_resultado == 1) {
+                        // Função para Cadastrar funcionários
+                        printf("Funcionalidade Cadastrar funcionários não implementada.\n");
+                    }
+                    break;
+            }
+
+            // Verifica se foi feito o logout
+            if (escolha == 6) {
+                break; // Sai do loop do menu e volta para o login
+            }
+        }
+    }
 
     return 0;
 }

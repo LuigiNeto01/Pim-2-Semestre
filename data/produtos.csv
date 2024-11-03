@@ -99,4 +99,3 @@ id_produto;nome_item;tipo;preco;validade;unidade_medida;valor_nutricional
 98;Abacaxi;Fruta;7,35;7;maço;Alto
 99;Macadâmia;Vegetal;8,71;7;penca;Médio
 100;Uva;Semente;8,01;7;g;Baixo
-101;macaco;animal;999,99;12/32/3333;kg;gordo
