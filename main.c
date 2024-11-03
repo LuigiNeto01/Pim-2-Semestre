@@ -98,7 +98,7 @@ int main() {
 
             switch (escolha) {
                 case 1:
-                    venda();
+                    venda(login_resultado);
                     break;
                 case 2:
                     exibir_tabela();

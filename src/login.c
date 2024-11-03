@@ -91,7 +91,7 @@ int login() {
             printf("\033[1;31m║         Senha ou login errado!          ║\033[0m\n");
             printf("\033[1;31m║ Pressione qualquer tecla para continuar ║\033[0m\n");
             printf("\033[1;31m╚═════════════════════════════════════════╝\033[0m\n");
-            getchar();  // Aguarda a entrada do usuário para continuar
+            _getch();  // Aguarda a entrada do usuário para continuar
             mostrar_cursor();
         }
 
