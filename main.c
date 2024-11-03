@@ -1,30 +1,41 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <conio.h>
+#include <windows.h>
+
+// Importando funcoes de codigos auxiliares 
 #include "src/login.c"
 #include "src/components/ascii.c"
+#include "src/utils.h"
+#include "src/utils.c"
 
 void tela_menu(int login_resultado) {
     int escolha;
     
     Ascii(1);
-    printf("╔════════════════════════════╗\n");
-    printf("║ Escolha uma opção          ║\n");
-    printf("║ 1- Vendas                  ║\n");
-    printf("║ 2- Registros               ║\n");
-    printf("║ 3- Cadastrar produtos      ║\n");
-    printf("║ 4- Dashboards              ║\n");
-    printf("║ 5- Avisos                  ║\n");
-    printf("║ 6- Sair                    ║\n");
+    printf("╔═════════════════════════════╗\n");
+    printf("║     *Escolha uma opção*     ║\n");
+    printf("║ 1- Vendas                   ║\n");
+    printf("║ 2- Registros                ║\n");
+    printf("║ 3- Cadastrar produtos       ║\n");
+    printf("║ 4- Dashboards               ║\n");
+    printf("║ 5- Avisos                   ║\n");
+    printf("║ 6- Sair                     ║\n");
     if(login_resultado == 1){
-        printf("║ 7- Cadastrar funcionarios  ║\n");
+        printf("║ 7- Cadastrar funcionarios   ║\n");
     }
-    printf("╚════════════════════════════╝\n");
+    printf("╚═════════════════════════════╝\n");
 
-    printf("╔═══════════════════╗\n");
-    printf("║ Sua escolha:      ║\n");
-    printf("╚═══════════════════╝\n\n");
+    // Imprimir a caixa para entrada de escolha centralizada
+    gotoxy(0, 18);
+    printf("╔════════════════════╗\n");
+    gotoxy(0, 19);
+    printf("║ Sua escolha:       ║\n");
+    gotoxy(0, 20);
+    printf("╚════════════════════╝\n\n");
 
-    scanf("%d", &escolha); // Corrigi o scanf para usar &escolha
+    gotoxy(15, 19);
+    scanf("%d", &escolha);
 
     switch (escolha) {
         case 1:
@@ -43,11 +54,11 @@ void tela_menu(int login_resultado) {
             // Função ou código para Avisos
             break;
         case 6:
-            exit(0); // Sai do programa
+            system("main");
             break;
         case 7:
 
-            break;        
+            break;
         default:
 
             break;
