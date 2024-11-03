@@ -8,13 +8,14 @@
 #include "src/components/ascii.c"
 #include "src/utils.h"
 #include "src/utils.c"
-#include"src/cadastrar_produto.c"
+#include "src/cadastrar_produto.c"
+#include "src/exibir_produtos.c"
 
 void tela_menu(int login_resultado) {
     int escolha = 1; // Índice inicial
     int opcao_selecionada;
     int num_opcoes = 6;
-    int linha_inicial = 9;
+    int linha_inicial = 10;
 
     // Se login_resultado for 1, adicionamos mais uma opção
     if (login_resultado == 1) {
@@ -61,7 +62,7 @@ void tela_menu(int login_resultado) {
             opcao_selecionada = escolha;
             break; // Sair do loop ao selecionar a opção
         }
-    }
+    }   
     mostrar_cursor();
 
     switch (escolha) {
@@ -69,7 +70,7 @@ void tela_menu(int login_resultado) {
             // Função ou código para Vendas
             break;
         case 2:
-            // Função ou código para Registros
+            exibir_tabela();
             break;
         case 3:
             // Função para Cadastrar produtos
