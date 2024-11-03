@@ -2,9 +2,18 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <conio.h>
+#include <windows.h>
 
 #define MAX_LINE_LENGTH 512
 #define DATA_FILE_PATH "data/credenciais_funcionarios.csv"
+
+void gotoxy(int x, int y) {
+    COORD coord;
+    coord.X = x;
+    coord.Y = y;
+    SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
+}
 
 int get_id(const char *nome_funcionario, const char *senha_acesso) {
     FILE *file = fopen(DATA_FILE_PATH, "r");
@@ -50,19 +59,29 @@ int login() {
         system("cls");
         Ascii(2);
 
-        printf("╔═══════════════════╗\n");
-        printf("║ Digite seu login: ║\n");
-        printf("╚═══════════════════╝\n");
+        // Interface para login
+        gotoxy(0, 0); 
+        printf("╔═══════════════════════════════════════════════╗");
+        gotoxy(0, 1); 
+        printf("║ Digite seu login:                             ║");
+        gotoxy(0, 2);
+        printf("╚═══════════════════════════════════════════════╝");
 
+        gotoxy(20, 1); // Move o cursor para dentro do quadrado, após o texto
         fgets(login, sizeof(login), stdin);
         login[strcspn(login, "\n")] = '\0';
         
         system("cls");
         Ascii(2);
-        printf("╔═══════════════════╗\n");
-        printf("║ Digite seu senha: ║\n");
-        printf("╚═══════════════════╝\n");
+        // Interface para senha
+        gotoxy(0, 0);
+        printf("╔═══════════════════════════════════════════════╗");
+        gotoxy(0, 1);
+        printf("║ Digite sua senha:                             ║");
+        gotoxy(0, 2);
+        printf("╚═══════════════════════════════════════════════╝");
 
+        gotoxy(20, 1); // Move o cursor para dentro do quadrado, após o texto
         fgets(senha, sizeof(senha), stdin);
         senha[strcspn(senha, "\n")] = '\0';
 
