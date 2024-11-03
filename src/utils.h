@@ -3,6 +3,8 @@
 #define UTILS_H
 
 void gotoxy(int x, int y);
-void print_centered(const char* text);
+void ocultar_cursor();
+void mostrar_cursor();
+void cadastro_produto();
 
 #endif // UTILS_H

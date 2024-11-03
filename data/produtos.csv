@@ -1,0 +1,101 @@
+nome_item;tipo;preco;validade;unidade_medida;valor_nutricional
+Lichia;Vegetal;5,8;30;kg;Médio
+Amora;Semente;6,53;7;kg;Baixo
+Ervilha;Pimenta;13,54;60;g;Baixo
+Maçã Verde;Raiz;10,36;45;maço;Médio
+Damasco;Fruta;15,69;7;penca;Baixo
+Couve-flor;Fruta;6,4;15;g;Médio
+Mamão;Vegetal;4,59;15;pacote;Alto
+Alecrim;Raiz;1,73;15;penca;Médio
+Salada Mista;Pimenta;14,88;7;penca;Médio
+Acelga Verde;Pimenta;3,5;15;penca;Médio
+Beringela;Raiz;3,32;30;kg;Médio
+Escarola;Pimenta;15,92;7;kg;Alto
+Alface;Folha;10,1;15;penca;Alto
+Beterraba;Noz;8,49;45;unidade;Alto
+Mamão;Vegetal;12,44;15;maço;Baixo
+Milho;Legume;8,0;45;unidade;Baixo
+Abacaxi;Raiz;5,3;7;penca;Baixo
+Vagem;Fruta;19,32;30;pacote;Baixo
+Caju;Pimenta;4,18;7;penca;Baixo
+Maçã Verde;Legume;9,75;7;maço;Médio
+Endívia;Legume;9,48;15;penca;Alto
+Figo;Fruta;10,4;7;penca;Baixo
+Limão;Semente;16,43;45;maço;Baixo
+Endívia;Erva;3,9;15;maço;Baixo
+Pimentão;Fruta;3,09;15;unidade;Baixo
+Tâmara;Noz;5,41;15;kg;Alto
+Noz;Vegetal;6,94;7;maço;Médio
+Maçã;Raiz;6,88;7;pacote;Médio
+Manjericão;Raiz;10,58;45;unidade;Alto
+Coco;Fruta;10,27;30;maço;Alto
+Abobrinha;Folha;3,34;15;pacote;Baixo
+Batata Doce;Fruta;18,08;15;g;Baixo
+Pimenta Doce;Pimenta;16,83;60;penca;Alto
+Inhame;Legume;18,31;30;unidade;Baixo
+Milho;Semente;14,5;15;pacote;Médio
+Tâmara;Legume;12,69;7;maço;Alto
+Jabuticaba;Vegetal;8,89;7;kg;Alto
+Caqui;Folha;7,4;60;unidade;Baixo
+Tomate;Noz;12,54;15;unidade;Baixo
+Pistache;Erva;19,76;60;maço;Médio
+Caqui;Semente;7,64;30;kg;Alto
+Cebolinha;Noz;6,28;30;pacote;Baixo
+Abóbora;Pimenta;10,45;45;g;Alto
+Damasco;Raiz;14,68;60;kg;Baixo
+Inhame;Raiz;15,72;7;unidade;Baixo
+Salada Mista;Fruta;14,66;60;unidade;Alto
+Noz;Semente;8,58;15;g;Baixo
+Goiaba;Legume;2,0;15;pacote;Alto
+Abacaxi;Noz;3,42;45;unidade;Alto
+Damasco;Folha;7,41;60;g;Alto
+Salsão;Raiz;14,38;30;unidade;Médio
+Kiwi;Noz;11,75;7;kg;Médio
+Manga;Legume;15,18;15;penca;Baixo
+Endívia;Folha;11,62;45;pacote;Médio
+Aipo;Folha;14,79;15;penca;Médio
+Tomate;Fruta;16,26;15;unidade;Alto
+Amêndoa;Pimenta;7,79;7;maço;Médio
+Banana;Vegetal;6,23;45;pacote;Alto
+Salada Mista;Semente;5,72;15;maço;Alto
+Limão;Vegetal;7,4;60;pacote;Baixo
+Acelga Verde;Legume;4,14;60;maço;Alto
+Batata;Vegetal;9,84;7;g;Baixo
+Tâmara;Legume;4,58;7;maço;Baixo
+Pinhão;Fruta;18,22;45;maço;Alto
+Mamão;Erva;16,71;60;penca;Alto
+Batata Doce;Semente;18,72;45;unidade;Alto
+Amora;Semente;8,84;15;unidade;Médio
+Amora;Folha;7,79;45;unidade;Alto
+Funcho;Legume;15,2;15;unidade;Médio
+Abóbora Cabotiá;Pimenta;11,82;30;pacote;Médio
+Lichia;Erva;13,96;30;pacote;Alto
+Rabanete;Pimenta;15,97;45;kg;Médio
+Maracujá;Erva;10,99;45;penca;Baixo
+Tomate Cereja;Folha;8,03;15;g;Alto
+Pinoli;Erva;12,83;45;unidade;Médio
+Brócolis;Erva;14,07;45;kg;Baixo
+Graviola;Raiz;16,44;60;pacote;Baixo
+Ervilha;Vegetal;7,55;30;unidade;Alto
+Rúcula;Fruta;12,03;45;kg;Médio
+Carambola;Raiz;11,95;15;pacote;Alto
+Tomate Cereja;Fruta;5,2;30;g;Alto
+Brócolis;Erva;17,36;60;penca;Alto
+Acelga Verde;Semente;5,78;7;penca;Alto
+Manga;Erva;13,55;30;maço;Baixo
+Laranja;Fruta;17,59;7;maço;Alto
+Morango;Erva;15,11;60;unidade;Médio
+Beringela;Fruta;11,22;30;pacote;Alto
+Rabanete;Raiz;12,27;30;pacote;Baixo
+Laranja;Folha;18,15;15;unidade;Baixo
+Milho;Erva;8,8;7;penca;Alto
+Romã;Semente;13,44;30;penca;Baixo
+Mamão;Fruta;9,4;30;g;Alto
+Mangostão;Legume;12,49;60;pacote;Alto
+Brócolis;Semente;19,83;30;kg;Baixo
+Acerola;Folha;4,01;30;maço;Médio
+Rabanete;Raiz;16,59;60;penca;Alto
+Carambola;Folha;11,83;45;penca;Médio
+Abacaxi;Fruta;7,35;7;maço;Alto
+Macadâmia;Vegetal;8,71;7;penca;Médio
+Uva;Semente;8,01;7;g;Baixo

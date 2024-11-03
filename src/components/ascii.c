@@ -36,6 +36,7 @@ void Ascii(int opcao) {
             printf("\033[32m██║     ██║  ██║╚██████╔╝██████╔╝╚██████╔╝   ██║   ╚██████╔╝███████║\033[0m\n");
             printf("\033[32m╚═╝     ╚═╝  ╚═╝ ╚═════╝ ╚═════╝  ╚═════╝    ╚═╝    ╚═════╝ ╚══════╝\033[0m\n");
             printf("\n");
+            break;
 
         case 4:
             printf("\n");
@@ -46,6 +47,8 @@ void Ascii(int opcao) {
             printf("\033[32m███████╗███████║   ██║   ╚██████╔╝╚██████╔╝╚██████╔╝███████╗\033[0m\n");
             printf("\033[32m╚══════╝╚══════╝   ╚═╝    ╚═════╝  ╚══▀▀═╝  ╚═════╝ ╚══════╝\033[0m\n");
             printf("\n");
+            break;
+            
         default:
             printf("\033[31mOpção inválida! Por favor, escolha uma opção válida. ❌\033[0m\n");
             break;
