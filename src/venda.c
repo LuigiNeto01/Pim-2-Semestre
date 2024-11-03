@@ -1,6 +1,7 @@
 #include <stdio.h> 
 #include <stdlib.h> 
 #include <string.h> 
+#include <time.h>
 #include <conio.h>
 #include <ctype.h>
 #include "utils.h"
@@ -222,8 +223,37 @@ int menuSelecao(char *options[], int num_options, int initial_line) {
     return selected_option; // Retorna a opção selecionada
 }
 
+void salvar_venda_csv(int id_funcionario, double valor_venda, const char *lista_produtos, const char *tipo, const char *cpf) {
+    // Nome do arquivo CSV
+    const char *nome_arquivo = "data/registro_vendas.csv";
+    
+    // Gerar timestamp atual
+    char timestamp[20];
+    time_t t;
+    struct tm *tmp;
+
+    t = time(NULL);
+    tmp = localtime(&t);
+    strftime(timestamp, sizeof(timestamp), "%Y-%m-%d %H:%M:%S", tmp);
+
+    // Abre o arquivo CSV em modo "append" para adicionar linhas ao final
+    FILE *arquivo = fopen(nome_arquivo, "a");
+    if (arquivo == NULL) {
+        fprintf(stderr, "Erro ao abrir o arquivo %s\n", nome_arquivo);
+        return;
+    }
+
+    // Escreve os dados no formato CSV
+    fprintf(arquivo, "%s;%d;%.2f;\"%s\";%s;%s\n", timestamp, id_funcionario, valor_venda, lista_produtos, tipo, cpf);
+
+    // Fecha o arquivo
+    fclose(arquivo);
+    
+    printf("Dados salvos com sucesso!\n");
+}
+
 // Função para realizar uma venda
-int venda() {
+int venda(int id_funcionario) {
     // Declaração das variáveis
     Produto produtos[100]; // Array para armazenar até 100 produtos
     int num_produtos;
@@ -245,7 +275,7 @@ int venda() {
     int opcao;
 
     // Carrega os produtos a partir do arquivo
-    num_produtos = lerProdutos(produtos, 100);
+    num_produtos = lerProdutos(produtos, 100000);
 
     if (num_produtos == 0) {
         // Caso nenhum produto seja encontrado, exibe uma mensagem e retorna
@@ -330,6 +360,10 @@ int venda() {
                 total_compra += subtotal;
             } else if (opcao == 2) { // Pagar
                 total_compra += subtotal;
+                char tipo[20] = "Presencial";
+                char cpf[15] = "12345678901";
+                
+                // Salvar os dados no CSV
                 continuar = 0;
             } else if (opcao == 3) { // Cancelar venda
                 total_compra = 0.0f;
@@ -362,7 +396,7 @@ int venda() {
         printf("   ╚════════════════════════════════════════════════════╝\n");
         gotoxy(42, 9);
         printf("%.2f", total_compra);
-        _getch(); // Aguarda uma tecla ser pressionada
+        _getch();
     } else {
         printf("   ╔══════════════════════════════════════════════╗\n");
         printf("   ║ Venda cancelada. Nenhum valor foi cobrado.   ║\n");
