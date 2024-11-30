@@ -99,3 +99,5 @@ id_produto;nome_item;tipo;preco_venda;preco_compra;validade;unidade_medida;valor
 98;Abacaxi;Fruta;7,35;5,80;7;Caixa;Alto;200;0,6
 99;Macadâmia;Vegetal;8,71;6,80;7;Caixa;Médio;130;0,3
 100;Uva;Semente;8,01;6,20;7;Kg;Baixo;220;0,2
+101;Ricardo;Humano;500.00;300.50;80;m;Alto;0;2.00
+102;Emir;Animal;1.00;0.15;curta;10;alto;0;23.00

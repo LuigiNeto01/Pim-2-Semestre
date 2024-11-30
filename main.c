@@ -11,6 +11,7 @@
 #include "src/cadastrar_produto.c"
 #include "src/exibir_produtos.c"
 #include "src/venda.c"
+#include "src/fluxo_estoque.c"
 
 // Função para exibir o menu e retornar a opção selecionada
 int exibir_menu(int login_resultado) {
@@ -30,9 +31,9 @@ int exibir_menu(int login_resultado) {
     printf("╔════════════════════════════════╗\n");
     printf("║      *Escolha uma opção*       ║\n");
     printf("║~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~║\n");
-    printf("║    1- Vendas                   ║\n");
-    printf("║    2- Registros                ║\n");
-    printf("║    3- Cadastrar produtos       ║\n");
+    printf("║    1- Fluxo de Caixa           ║\n");
+    printf("║    2- Tabela de Produtos       ║\n");
+    printf("║    3- Cadastrar Produtos       ║\n");
     printf("║    4- Dashboards               ║\n");
     printf("║    5- Avisos                   ║\n");
     printf("║    6- Sair                     ║\n");
@@ -101,7 +102,7 @@ int main() {
                     venda(login_resultado);
                     break;
                 case 2:
-                    exibir_tabela();
+                    exibir_fluxo_estoque();
                     break;
                 case 3:
                     cadastro_produto();
