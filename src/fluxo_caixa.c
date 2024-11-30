@@ -3,6 +3,7 @@
 #include <conio.h>
 #include <windows.h>
 #include "utils.h"
+#include "doacao.c"
 
 
 // Função para exibir o menu e retornar a opção selecionada
@@ -73,10 +74,10 @@ int fluxo_caixa(int login_resultado){
                     venda(login_resultado);
                     break;
                 case 2:
-                    printf("Funcionalidade Compra não implementada.\n");
+                    
                     break;
                 case 3:
-                    printf("Funcionalidade Doaçao não implementada.\n");
+                    doacao(login_resultado);
                     break;
 
             }

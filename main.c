@@ -12,6 +12,7 @@
 #include "src/exibir_produtos.c"
 #include "src/venda.c"
 #include "src/fluxo_estoque.c"
+#include "src/fluxo_caixa.c"
 
 // Função para exibir o menu e retornar a opção selecionada
 int exibir_menu(int login_resultado) {
@@ -99,7 +100,7 @@ int main() {
 
             switch (escolha) {
                 case 1:
-                    venda(login_resultado);
+                    fluxo_caixa(login_resultado);
                     break;
                 case 2:
                     exibir_fluxo_estoque();
