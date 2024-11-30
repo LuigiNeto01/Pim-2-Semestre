@@ -6,24 +6,13 @@
 #include <ctype.h>
 #include "utils.h"
 #include "components/ascii.h"
+#include "venda.h"
 
 // Protótipos das funções de validação
 int validarInteiro(const char *str);
 int validarQuantidade(const char *str);
 
-// Estrutura para armazenar informações do produto
-typedef struct {
-    int id_produto;                // Identificador único do produto
-    char nome_item[100];           // Nome do produto
-    char tipo[50];                 // Tipo do produto
-    float preco_venda;             // Preço de venda do produto
-    float preco_compra;            // Preço de compra do produto
-    char validade[20];             // Data de validade do produto
-    char unidade_medida[20];       // Unidade de medida do produto (ex: kg, unidade)
-    char valor_nutricional[100];   // Informações nutricionais do produto
-    int quantidade_estoque;        // Quantidade em estoque do produto
-    float volume;                  // Volume do produto
-} Produto;
+
 
 // Estrutura para armazenar produtos e quantidades da compra atual
 typedef struct {
@@ -192,12 +181,12 @@ void capturarCPF(char *cpf_formatted) {
 }
 
 // Função para selecionar o tipo de venda (Presencial ou Online)
-void selecionarTipoVenda(char *tipo) {
+void selecionarTipoVenda(char *tipo, int ascii) {
     int selecionado = 1; // 1 para Presencial, 2 para Online
     int ch;
 
     system("cls");
-    Ascii(5);
+    Ascii(ascii);
     printf("   ╔═══════════════════════════════════╗\n");
     printf("   ║                                   ║\n");
     printf("   ╚═══════════════════════════════════╝\n");
@@ -581,7 +570,7 @@ int venda(int id_funcionario) {
     }
 
     // Seleciona o tipo de venda
-    selecionarTipoVenda(tipo_venda);
+    selecionarTipoVenda(tipo_venda, 5);
 
     // Limpa a tela e exibe a arte ASCII
     system("cls");
