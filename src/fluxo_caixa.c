@@ -4,6 +4,7 @@
 #include <windows.h>
 #include "utils.h"
 #include "doacao.c"
+#include "compra.c"
 
 
 // Função para exibir o menu e retornar a opção selecionada
@@ -74,7 +75,7 @@ int fluxo_caixa(int login_resultado){
                     venda(login_resultado);
                     break;
                 case 2:
-                    
+                    compra(login_resultado);
                     break;
                 case 3:
                     doacao(login_resultado);

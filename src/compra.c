@@ -5,11 +5,12 @@
 #include <conio.h>
 #include <ctype.h>
 #include "utils.h"
-#include "venda.h"
 #include "components/ascii.h"
+#include "venda.h"
+
 
 // Função para salvar a venda no arquivo CSV
-void salvar_doacao_csv(int id_funcionario, double valor_venda, const char *lista_produtos, const char *tipo, const char *cpf) {
+void salvar_compra_csv(int id_funcionario, double valor_venda, const char *lista_produtos, const char *tipo, const char *cpf) {
     // Nome do arquivo CSV
     const char *nome_arquivo = "data/registro_vendas.csv";
     
@@ -30,7 +31,7 @@ void salvar_doacao_csv(int id_funcionario, double valor_venda, const char *lista
     }
 
     // Escreve os dados no formato CSV
-    fprintf(arquivo, "%s;%d;%.2f;%s;%s;%s;%d\n", timestamp, id_funcionario, 0.00, lista_produtos, tipo, cpf, 0); 
+    fprintf(arquivo, "%s;%d;%.2f;%s;%s;%s;%d\n", timestamp, id_funcionario, valor_venda, lista_produtos, tipo, cpf, 2);
 
     // Fecha o arquivo
     fclose(arquivo);
@@ -38,8 +39,9 @@ void salvar_doacao_csv(int id_funcionario, double valor_venda, const char *lista
     printf("Dados salvos com sucesso!\n");
 }
 
+
 // Função principal de venda refatorada
-int doacao(int id_funcionario) {
+int compra(int id_funcionario) {
     // Declaração das variáveis
     Produto *produtos = NULL;
     int max_produtos = 1000; // Capacidade inicial para produtos
@@ -91,11 +93,11 @@ int doacao(int id_funcionario) {
     }
 
     // Seleciona o tipo de venda
-    selecionarTipoVenda(tipo_venda, 10);
+    selecionarTipoVenda(tipo_venda, 9);
 
     // Limpa a tela e exibe a arte ASCII
     system("cls");
-    Ascii(10);
+    Ascii(9);
 
     // Exibe a caixa para inserir o CPF do cliente
     printf("   ╔═══════════════════════════════════════════╗\n");
@@ -115,7 +117,7 @@ int doacao(int id_funcionario) {
     // Loop principal da venda
     while (continuar) {
         system("cls");
-        Ascii(10);
+        Ascii(9);
 
         // Exibe o total atual da compra
         gotoxy(0, 8);
@@ -123,7 +125,7 @@ int doacao(int id_funcionario) {
         printf("   ║  Total atual da compra: R$          ║\n");
         printf("   ╚═════════════════════════════════════╝\n");
         gotoxy(32, 9);
-        printf("0.00");
+        printf("%.2f", total_compra);
 
         // Caixa para inserir o ID do produto
         gotoxy(0, 11);
@@ -170,7 +172,7 @@ int doacao(int id_funcionario) {
             // Verifica disponibilidade
             if (!verificarDisponibilidade(produtos, num_produtos, id_produto, quantidade, compra_produtos, num_compra_produtos)) {
                 system("cls");
-                Ascii(10);
+                Ascii(9);
                 gotoxy(0, 8);
                 printf("   ╔══════════════════════════════════════════════════════════╗\n");
                 printf("   ║    Quantidade solicitada excede o estoque disponível.    ║\n");
@@ -178,9 +180,9 @@ int doacao(int id_funcionario) {
 
                 // Menu de opções após indisponibilidade
                 char *opcoesIndisponivel[] = {
-                    "Continuar com a doação",
+                    "Continuar com a compra",
                     "Ir para o pagamento",
-                    "Cancelar doação",
+                    "Cancelar compra",
                     "Sair"
                 };
                 int num_opcoes_indisponivel = 4;
@@ -189,7 +191,7 @@ int doacao(int id_funcionario) {
 
                 switch (opcao_indisponivel) {
                     case 1:
-                        // Continuar com a doacao
+                        // Continuar com a compra
                         continue;
                     case 2:
                         // Ir para o pagamento
@@ -199,7 +201,7 @@ int doacao(int id_funcionario) {
                         total_compra = 0.0f;
                         lista_produtos_ids[0] = '\0'; // Limpa a lista de produtos
                         num_compra_produtos = 0;
-                        printf("Doação cancelada.\n");
+                        printf("Compra cancelada.\n");
                         _getch();
                         continuar = 0;
                         break;
@@ -214,7 +216,7 @@ int doacao(int id_funcionario) {
                 continue;
             }
 
-            // Adiciona ou atualiza o produto em doacao_produtos[]
+            // Adiciona ou atualiza o produto em compra_produtos[]
             int encontrado = 0;
             for (int i = 0; i < num_compra_produtos; i++) {
                 if (compra_produtos[i].id_produto == id_produto) {
@@ -224,7 +226,7 @@ int doacao(int id_funcionario) {
                 }
             }
             if (!encontrado) {
-                // Verifica se é necessário expandir o array doacao_produtos
+                // Verifica se é necessário expandir o array compra_produtos
                 if (num_compra_produtos == max_compra_produtos) {
                     max_compra_produtos *= 2;
                     ProdutoCompra *temp = realloc(compra_produtos, sizeof(ProdutoCompra) * max_compra_produtos);
@@ -244,19 +246,23 @@ int doacao(int id_funcionario) {
                 num_compra_produtos++;
             }
 
+            // Calcula o subtotal
+            float subtotal = produto->preco_venda * quantidade;
 
+            // Atualiza o total da compra
+            total_compra += subtotal;
 
             // Exibe o subtotal e o total atualizado
             gotoxy(0, 18);
-            printf("Subtotal deste item: R$ 0.00\n");
+            printf("Subtotal deste item: R$ %.2f\n", subtotal);
             gotoxy(32, 9);
             printf("%.2f\n", total_compra);
 
             // Menu de opções
             char *opcoes[] = {
                 "Adicionar mais um produto",
-                "Doar",
-                "Cancelar doação",
+                "Comprar",
+                "Cancelar compra",
                 "Sair"
             };
             int num_opcoes = 4;
@@ -275,7 +281,7 @@ int doacao(int id_funcionario) {
                     total_compra = 0.0f;
                     lista_produtos_ids[0] = '\0'; // Limpa a lista de produtos
                     num_compra_produtos = 0;
-                    printf("Doação cancelada.\n");
+                    printf("Compra cancelada.\n");
                     _getch();
                     continuar = 0;
                     break;
@@ -290,7 +296,7 @@ int doacao(int id_funcionario) {
         } else {
             // Produto não encontrado
             system("cls");
-            Ascii(10);
+            Ascii(9);
             gotoxy(0, 8);
             printf("   ╔═════════════════════════════════════════╗\n");
             printf("   ║        Produto Não Encontrado!          ║\n");
@@ -338,7 +344,7 @@ pagamento:
         }
 
         // Salva os dados no CSV
-        salvar_doacao_csv(id_funcionario, total_compra, lista_produtos_ids, tipo_venda, cpf_formatted);
+        salvar_compra_csv(id_funcionario, total_compra, lista_produtos_ids, tipo_venda, cpf_formatted);
         continuar = 0;
     } else {
         // Nenhum produto na compra
@@ -349,20 +355,20 @@ pagamento:
 
     // Finaliza a venda
     system("cls");
-    Ascii(10);
+    Ascii(9);
     if (total_compra > 0) {
         printf("   ╔════════════════════════════════════════════════════╗\n");
-        printf("   ║ Doação finalizada. Total a pagar: R$               ║\n");
+        printf("   ║ Compra finalizada. Total a pagar: R$               ║\n");
         printf("   ║                                                    ║\n");
         printf("   ║           Obrigado por comprar conosco!            ║\n");
         printf("   ║      Pressione qualquer tecla para continuar       ║\n");
         printf("   ╚════════════════════════════════════════════════════╝\n");
         gotoxy(42, 9);
-        printf("0.00");
+        printf("%.2f", total_compra);
         _getch();
     } else {
         printf("   ╔══════════════════════════════════════════════╗\n");
-        printf("   ║ Doação cancelada. Nenhum valor foi cobrado.  ║\n");
+        printf("   ║ Compra cancelada. Nenhum valor foi cobrado.  ║\n");
         printf("   ╚══════════════════════════════════════════════╝\n");
     }
 
