@@ -12,14 +12,6 @@
 int validarInteiro(const char *str);
 int validarQuantidade(const char *str);
 
-
-
-// Estrutura para armazenar produtos e quantidades da compra atual
-typedef struct {
-    int id_produto;
-    float quantidade;
-} ProdutoCompra;
-
 // Função para validar se uma string contém apenas números inteiros
 int validarInteiro(const char *str) {
     if (str == NULL || *str == '\0') {
@@ -599,7 +591,7 @@ int venda(int id_funcionario) {
         // Exibe o total atual da compra
         gotoxy(0, 8);
         printf("   ╔═════════════════════════════════════╗\n");
-        printf("   ║  Total atual da compra: R$          ║\n");
+        printf("   ║  Total atual da venda: R$           ║\n");
         printf("   ╚═════════════════════════════════════╝\n");
         gotoxy(32, 9);
         printf("%.2f", total_compra);
@@ -657,7 +649,7 @@ int venda(int id_funcionario) {
 
                 // Menu de opções após indisponibilidade
                 char *opcoesIndisponivel[] = {
-                    "Continuar com a compra",
+                    "Continuar com a venda",
                     "Ir para o pagamento",
                     "Cancelar venda",
                     "Sair"
@@ -738,7 +730,7 @@ int venda(int id_funcionario) {
             // Menu de opções
             char *opcoes[] = {
                 "Adicionar mais um produto",
-                "Pagar",
+                "Vender",
                 "Cancelar venda",
                 "Sair"
             };
@@ -825,7 +817,7 @@ pagamento:
         continuar = 0;
     } else {
         // Nenhum produto na compra
-        printf("Nenhum produto na compra para efetuar o pagamento.\n");
+        printf("Nenhum produto na venda para efetuar o pagamento.\n");
         _getch();
         continuar = 0;
     }
@@ -835,7 +827,7 @@ pagamento:
     Ascii(5);
     if (total_compra > 0) {
         printf("   ╔════════════════════════════════════════════════════╗\n");
-        printf("   ║ Compra finalizada. Total a pagar: R$               ║\n");
+        printf("   ║ Venda finalizada. Total a pagar: R$                ║\n");
         printf("   ║                                                    ║\n");
         printf("   ║           Obrigado por comprar conosco!            ║\n");
         printf("   ║      Pressione qualquer tecla para continuar       ║\n");
