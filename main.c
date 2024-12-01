@@ -14,6 +14,8 @@
 #include "src/fluxo_estoque.c"
 #include "src/fluxo_caixa.c"
 #include "src/dashboard.c"
+#include "src/cadastrar_funcionario.c"
+
 
 // Função para exibir o menu e retornar a opção selecionada
 int exibir_menu(int login_resultado) {
@@ -123,7 +125,7 @@ int main() {
                 case 7:
                     if (login_resultado == 1) {
                         // Função para Cadastrar funcionários
-                        printf("Funcionalidade Cadastrar funcionários não implementada.\n");
+                        cadastrar_funcionario();
                     }
                     break;
             }
