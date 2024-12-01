@@ -1,102 +1,101 @@
 id_produto;nome_item;tipo;preco_venda;preco_compra;validade;unidade_medida;valor_nutricional;quantidade_estoque;volume
-1;Lichia;Vegetal;5,80;4,50;30;kg;Médio;120;0,5
-2;Amora;Semente;6,53;5,20;7;kg;Baixo;200;0,2
-3;Ervilha;Pimenta;13,54;10,80;60;g;Baixo;150;0,1
-4;Maçã Verde;Raiz;10,36;8,00;45;Caixa;Médio;80;0,7
-5;Damasco;Fruta;15,69;12,50;7;Kg;Baixo;50;0,3
-6;Couve-flor;Fruta;6,40;5,10;15;kg;Médio;5;0,4
-7;Mamão;Vegetal;4,59;3,30;15;Caixa;Alto;1;0,6
-8;Alecrim;Raiz;1,73;1,30;15;Kg;Médio;0;0,1
-9;Salada Mista;Pimenta;14,88;12,00;7;Saco;Médio;100;0,5
-10;Acelga Verde;Pimenta;3,50;2,80;15;Kg;Médio;250;0,2
-11;Beringela;Raiz;3,32;2,50;30;Caixa;Médio;130;0,4
-12;Escarola;Pimenta;15,92;12,00;7;Kg;Alto;60;0,7
-13;Alface;Folha;10,10;8,00;15;Kg;Alto;180;0,3
-14;Beterraba;Noz;8,49;6,50;45;Kg;Alto;100;0,5
-15;Mamão;Vegetal;12,44;10,00;15;Caixa;Baixo;90;0,6
-16;Milho;Legume;8,00;6,20;45;Kg;Baixo;200;0,3
-17;Abacaxi;Raiz;5,30;4,00;7;Kg;Baixo;50;0,8
-18;Vagem;Fruta;19,32;15,00;30;Saco;Baixo;70;0,4
-19;Caju;Pimenta;4,18;3,00;7;Kg;Baixo;160;0,2
-20;Maçã Verde;Legume;9,75;7,80;7;Caixa;Médio;110;0,5
-21;Endívia;Legume;9,48;7,20;15;Kg;Alto;100;0,3
-22;Figo;Fruta;10,40;8,30;7;Kg;Baixo;85;0,2
-23;Limão;Semente;16,43;13,00;45;Caixa;Baixo;120;0,6
-24;Endívia;Erva;3,90;2,90;15;Kg;Baixo;300;0,2
-25;Pimentão;Fruta;3,09;2,40;15;Kg;Baixo;180;0,5
-26;Tâmara;Noz;5,41;4,10;15;Kg;Alto;50;0,4
-27;Noz;Vegetal;6,94;5,20;7;Kg;Médio;70;0,3
-28;Maçã;Raiz;6,88;5,00;7;Caixa;Médio;100;0,6
-29;Manjericão;Raiz;10,58;8,40;45;Kg;Alto;120;0,3
-30;Coco;Fruta;10,27;8,00;30;Caixa;Alto;90;0,8
-31;Abobrinha;Folha;3,34;2,50;15;Saco;Baixo;160;0,4
-32;Batata Doce;Fruta;18,08;14,00;15;Kg;Baixo;70;0,5
-33;Pimenta Doce;Pimenta;16,83;13,00;60;Kg;Alto;90;0,3
-34;Inhame;Legume;18,31;15,00;30;Kg;Baixo;60;0,7
-35;Milho;Semente;14,50;11,50;15;Kg;Médio;200;0,4
-36;Tâmara;Legume;12,69;10,00;7;Kg;Alto;80;0,3
-37;Jabuticaba;Vegetal;8,89;6,90;7;Kg;Alto;100;0,4
-38;Caqui;Folha;7,40;5,80;60;Kg;Baixo;140;0,5
-39;Tomate;Noz;12,54;10,00;15;Kg;Baixo;110;0,3
-40;Pistache;Erva;19,76;15,80;60;Kg;Médio;90;0,2
-41;Caqui;Semente;7,64;6,10;30;Kg;Alto;150;0,5
-42;Cebolinha;Noz;6,28;4,90;30;Saco;Baixo;180;0,3
-43;Abóbora;Pimenta;10,45;8,00;45;Kg;Alto;120;0,6
-44;Damasco;Raiz;14,68;11,50;60;Kg;Baixo;130;0,4
-45;Inhame;Raiz;15,72;12,50;7;Kg;Baixo;80;0,7
-46;Salada Mista;Fruta;14,66;11,80;60;Kg;Alto;90;0,5
-47;Noz;Semente;8,58;6,70;15;Kg;Baixo;100;0,2
-48;Goiaba;Legume;2,00;1,50;15;Kg;Alto;220;0,6
-49;Abacaxi;Noz;3,42;2,60;45;Kg;Alto;150;0,4
-50;Damasco;Folha;7,41;5,90;60;Kg;Alto;200;0,3
-51;Salsão;Raiz;14,38;11,20;30;Kg;Médio;100;0,3
-52;Kiwi;Noz;11,75;9,20;7;Kg;Médio;110;0,5
-53;Manga;Legume;15,18;12,10;15;Kg;Baixo;130;0,6
-54;Endívia;Folha;11,62;9,00;45;Saco;Médio;160;0,3
-55;Aipo;Folha;14,79;11,80;15;Kg;Médio;140;0,4
-56;Tomate;Fruta;16,26;13,00;15;Kg;Alto;120;0,5
-57;Amêndoa;Pimenta;7,79;6,20;7;Caixa;Médio;100;0,4
-58;Banana;Vegetal;6,23;4,90;45;Caixa;Alto;150;0,3
-59;Salada Mista;Semente;5,72;4,40;15;Kg;Alto;90;0,5
-60;Limão;Vegetal;7,40;5,80;60;Kg;Baixo;200;0,4
-61;Acelga Verde;Legume;4,14;3,30;60;Caixa;Alto;230;0,6
-62;Batata;Vegetal;9,84;7,50;7;Kg;Baixo;250;0,2
-63;Tâmara;Legume;4,58;3,60;7;Kg;Baixo;180;0,3
-64;Pinhão;Fruta;18,22;14,50;45;Caixa;Alto;100;0,4
-65;Mamão;Erva;16,71;13,20;60;Kg;Alto;120;0,6
-66;Batata Doce;Semente;18,72;14,90;45;Kg;Alto;90;0,4
-67;Amora;Semente;8,84;6,90;15;Kg;Médio;170;0,3
-68;Amora;Folha;7,79;6,10;45;Caixa;Alto;140;0,2
-69;Funcho;Legume;15,20;12,30;15;Kg;Médio;100;0,5
-70;Abóbora Cabotiá;Pimenta;11,82;9,50;30;Saco;Médio;120;0,7
-71;Lichia;Erva;13,96;11,20;30;Saco;Alto;90;0,4
-72;Rabanete;Pimenta;15,97;12,50;45;Kg;Médio;80;0,6
-73;Maracujá;Erva;10,99;8,70;45;Caixa;Baixo;100;0,3
-74;Tomate Cereja;Folha;8,03;6,30;15;Kg;Alto;200;0,4
-75;Pinoli;Erva;12,83;10,20;45;Kg;Médio;110;0,5
-76;Brócolis;Erva;14,07;11,10;45;Kg;Baixo;120;0,7
-77;Graviola;Raiz;16,44;13,00;60;Saco;Baixo;100;0,6
-78;Ervilha;Vegetal;7,55;5,80;30;Kg;Alto;180;0,3
-79;Rúcula;Fruta;12,03;9,50;45;Kg;Médio;90;0,2
-80;Carambola;Raiz;11,95;9,30;15;Saco;Alto;70;0,5
-81;Tomate Cereja;Fruta;5,20;4,10;30;Kg;Alto;100;0,6
-82;Brócolis;Erva;17,36;14,00;60;Caixa;Alto;130;0,4
-83;Acelga Verde;Semente;5,78;4,50;7;Kg;Alto;150;0,3
-84;Manga;Erva;13,55;10,80;30;Kg;Baixo;110;0,2
-85;Laranja;Fruta;17,59;14,00;7;Caixa;Alto;130;0,5
-86;Morango;Erva;15,11;12,20;60;Kg;Médio;90;0,4
-87;Beringela;Fruta;11,22;8,90;30;Saco;Alto;200;0,6
-88;Rabanete;Raiz;12,27;9,80;30;Saco;Baixo;80;0,4
-89;Laranja;Folha;18,15;14,30;15;Kg;Baixo;70;0,3
-90;Milho;Erva;8,80;6,90;7;Caixa;Alto;150;0,7
-91;Romã;Semente;13,44;10,60;30;Caixa;Baixo;140;0,5
-92;Mamão;Fruta;9,40;7,50;30;Kg;Alto;200;0,4
-93;Mangostão;Legume;12,49;9,80;60;Saco;Alto;160;0,3
-94;Brócolis;Semente;19,83;15,80;30;Kg;Baixo;110;0,2
-95;Acerola;Folha;4,01;3,10;30;Caixa;Médio;180;0,4
-96;Rabanete;Raiz;16,59;13,20;60;Caixa;Alto;100;0,3
-97;Carambola;Folha;11,83;9,50;45;Caixa;Médio;90;0,5
-98;Abacaxi;Fruta;7,35;5,80;7;Caixa;Alto;200;0,6
-99;Macadâmia;Vegetal;8,71;6,80;7;Caixa;Médio;130;0,3
-100;Uva;Semente;8,01;6,20;7;Kg;Baixo;220;0,2
-
+1;Lichia;Vegetal;5,80;4,50;30;kg;Médio;118;0,50
+2;Amora;Semente;6,53;5,20;7;kg;Baixo;200;0,20
+3;Ervilha;Pimenta;13,54;10,80;60;g;Baixo;150;0,10
+4;Maçã Verde;Raiz;10,36;8,00;45;Caixa;Médio;80;0,70
+5;Damasco;Fruta;15,69;12,50;7;Kg;Baixo;50;0,30
+6;Couve-flor;Fruta;6,40;5,10;15;kg;Médio;5;0,40
+7;Mamão;Vegetal;4,59;3,30;15;Caixa;Alto;1;0,60
+8;Alecrim;Raiz;1,73;1,30;15;Kg;Médio;0;0,10
+9;Salada Mista;Pimenta;14,88;12,00;7;Saco;Médio;100;0,50
+10;Acelga Verde;Pimenta;3,50;2,80;15;Kg;Médio;300;0,20
+11;Beringela;Raiz;3,32;2,50;30;Caixa;Médio;130;0,40
+12;Escarola;Pimenta;15,92;12,00;7;Kg;Alto;60;0,70
+13;Alface;Folha;10,10;8,00;15;Kg;Alto;180;0,30
+14;Beterraba;Noz;8,49;6,50;45;Kg;Alto;100;0,50
+15;Mamão;Vegetal;12,44;10,00;15;Caixa;Baixo;90;0,60
+16;Milho;Legume;8,00;6,20;45;Kg;Baixo;200;0,30
+17;Abacaxi;Raiz;5,30;4,00;7;Kg;Baixo;50;0,80
+18;Vagem;Fruta;19,32;15,00;30;Saco;Baixo;70;0,40
+19;Caju;Pimenta;4,18;3,00;7;Kg;Baixo;160;0,20
+20;Maçã Verde;Legume;9,75;7,80;7;Caixa;Médio;110;0,50
+21;Endívia;Legume;9,48;7,20;15;Kg;Alto;100;0,30
+22;Figo;Fruta;10,40;8,30;7;Kg;Baixo;85;0,20
+23;Limão;Semente;16,43;13,00;45;Caixa;Baixo;120;0,60
+24;Endívia;Erva;3,90;2,90;15;Kg;Baixo;300;0,20
+25;Pimentão;Fruta;3,09;2,40;15;Kg;Baixo;180;0,50
+26;Tâmara;Noz;5,41;4,10;15;Kg;Alto;50;0,40
+27;Noz;Vegetal;6,94;5,20;7;Kg;Médio;70;0,30
+28;Maçã;Raiz;6,88;5,00;7;Caixa;Médio;100;0,60
+29;Manjericão;Raiz;10,58;8,40;45;Kg;Alto;120;0,30
+30;Coco;Fruta;10,27;8,00;30;Caixa;Alto;90;0,80
+31;Abobrinha;Folha;3,34;2,50;15;Saco;Baixo;160;0,40
+32;Batata Doce;Fruta;18,08;14,00;15;Kg;Baixo;70;0,50
+33;Pimenta Doce;Pimenta;16,83;13,00;60;Kg;Alto;90;0,30
+34;Inhame;Legume;18,31;15,00;30;Kg;Baixo;60;0,70
+35;Milho;Semente;14,50;11,50;15;Kg;Médio;200;0,40
+36;Tâmara;Legume;12,69;10,00;7;Kg;Alto;80;0,30
+37;Jabuticaba;Vegetal;8,89;6,90;7;Kg;Alto;100;0,40
+38;Caqui;Folha;7,40;5,80;60;Kg;Baixo;140;0,50
+39;Tomate;Noz;12,54;10,00;15;Kg;Baixo;110;0,30
+40;Pistache;Erva;19,76;15,80;60;Kg;Médio;90;0,20
+41;Caqui;Semente;7,64;6,10;30;Kg;Alto;150;0,50
+42;Cebolinha;Noz;6,28;4,90;30;Saco;Baixo;180;0,30
+43;Abóbora;Pimenta;10,45;8,00;45;Kg;Alto;120;0,60
+44;Damasco;Raiz;14,68;11,50;60;Kg;Baixo;130;0,40
+45;Inhame;Raiz;15,72;12,50;7;Kg;Baixo;80;0,70
+46;Salada Mista;Fruta;14,66;11,80;60;Kg;Alto;90;0,50
+47;Noz;Semente;8,58;6,70;15;Kg;Baixo;100;0,20
+48;Goiaba;Legume;2,00;1,50;15;Kg;Alto;220;0,60
+49;Abacaxi;Noz;3,42;2,60;45;Kg;Alto;150;0,40
+50;Damasco;Folha;7,41;5,90;60;Kg;Alto;200;0,30
+51;Salsão;Raiz;14,38;11,20;30;Kg;Médio;100;0,30
+52;Kiwi;Noz;11,75;9,20;7;Kg;Médio;110;0,50
+53;Manga;Legume;15,18;12,10;15;Kg;Baixo;130;0,60
+54;Endívia;Folha;11,62;9,00;45;Saco;Médio;160;0,30
+55;Aipo;Folha;14,79;11,80;15;Kg;Médio;140;0,40
+56;Tomate;Fruta;16,26;13,00;15;Kg;Alto;120;0,50
+57;Amêndoa;Pimenta;7,79;6,20;7;Caixa;Médio;100;0,40
+58;Banana;Vegetal;6,23;4,90;45;Caixa;Alto;150;0,30
+59;Salada Mista;Semente;5,72;4,40;15;Kg;Alto;90;0,50
+60;Limão;Vegetal;7,40;5,80;60;Kg;Baixo;200;0,40
+61;Acelga Verde;Legume;4,14;3,30;60;Caixa;Alto;230;0,60
+62;Batata;Vegetal;9,84;7,50;7;Kg;Baixo;250;0,20
+63;Tâmara;Legume;4,58;3,60;7;Kg;Baixo;180;0,30
+64;Pinhão;Fruta;18,22;14,50;45;Caixa;Alto;100;0,40
+65;Mamão;Erva;16,71;13,20;60;Kg;Alto;120;0,60
+66;Batata Doce;Semente;18,72;14,90;45;Kg;Alto;90;0,40
+67;Amora;Semente;8,84;6,90;15;Kg;Médio;170;0,30
+68;Amora;Folha;7,79;6,10;45;Caixa;Alto;140;0,20
+69;Funcho;Legume;15,20;12,30;15;Kg;Médio;100;0,50
+70;Abóbora Cabotiá;Pimenta;11,82;9,50;30;Saco;Médio;120;0,70
+71;Lichia;Erva;13,96;11,20;30;Saco;Alto;90;0,40
+72;Rabanete;Pimenta;15,97;12,50;45;Kg;Médio;80;0,60
+73;Maracujá;Erva;10,99;8,70;45;Caixa;Baixo;100;0,30
+74;Tomate Cereja;Folha;8,03;6,30;15;Kg;Alto;200;0,40
+75;Pinoli;Erva;12,83;10,20;45;Kg;Médio;110;0,50
+76;Brócolis;Erva;14,07;11,10;45;Kg;Baixo;120;0,70
+77;Graviola;Raiz;16,44;13,00;60;Saco;Baixo;100;0,60
+78;Ervilha;Vegetal;7,55;5,80;30;Kg;Alto;180;0,30
+79;Rúcula;Fruta;12,03;9,50;45;Kg;Médio;90;0,20
+80;Carambola;Raiz;11,95;9,30;15;Saco;Alto;70;0,50
+81;Tomate Cereja;Fruta;5,20;4,10;30;Kg;Alto;100;0,60
+82;Brócolis;Erva;17,36;14,00;60;Caixa;Alto;130;0,40
+83;Acelga Verde;Semente;5,78;4,50;7;Kg;Alto;150;0,30
+84;Manga;Erva;13,55;10,80;30;Kg;Baixo;110;0,20
+85;Laranja;Fruta;17,59;14,00;7;Caixa;Alto;130;0,50
+86;Morango;Erva;15,11;12,20;60;Kg;Médio;90;0,40
+87;Beringela;Fruta;11,22;8,90;30;Saco;Alto;200;0,60
+88;Rabanete;Raiz;12,27;9,80;30;Saco;Baixo;80;0,40
+89;Laranja;Folha;18,15;14,30;15;Kg;Baixo;70;0,30
+90;Milho;Erva;8,80;6,90;7;Caixa;Alto;150;0,70
+91;Romã;Semente;13,44;10,60;30;Caixa;Baixo;140;0,50
+92;Mamão;Fruta;9,40;7,50;30;Kg;Alto;200;0,40
+93;Mangostão;Legume;12,49;9,80;60;Saco;Alto;160;0,30
+94;Brócolis;Semente;19,83;15,80;30;Kg;Baixo;110;0,20
+95;Acerola;Folha;4,01;3,10;30;Caixa;Médio;180;0,40
+96;Rabanete;Raiz;16,59;13,20;60;Caixa;Alto;100;0,30
+97;Carambola;Folha;11,83;9,50;45;Caixa;Médio;90;0,50
+98;Abacaxi;Fruta;7,35;5,80;7;Caixa;Alto;200;0,60
+99;Macadâmia;Vegetal;8,71;6,80;7;Caixa;Médio;130;0,30
+100;Uva;Semente;8,01;6,20;7;Kg;Baixo;220;0,20

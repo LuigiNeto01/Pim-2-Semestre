@@ -305,7 +305,7 @@ pagamento:
     // Verifica se há produtos na compra
     if (num_compra_produtos > 0) {
         // Atualizar estoque
-        atualizarEstoque(produtos, num_produtos, compra_produtos, num_compra_produtos);
+        atualizarEstoque(produtos, num_produtos, compra_produtos, num_compra_produtos, 0);
 
         // Gerar lista_produtos_ids
         // Calcula o tamanho necessário para a string

@@ -169,53 +169,6 @@ int compra(int id_funcionario) {
             }
             float quantidade = atof(quantidade_str);
 
-            // Verifica disponibilidade
-            if (!verificarDisponibilidade(produtos, num_produtos, id_produto, quantidade, compra_produtos, num_compra_produtos)) {
-                system("cls");
-                Ascii(9);
-                gotoxy(0, 8);
-                printf("   ╔══════════════════════════════════════════════════════════╗\n");
-                printf("   ║    Quantidade solicitada excede o estoque disponível.    ║\n");
-                printf("   ╚══════════════════════════════════════════════════════════╝\n");
-
-                // Menu de opções após indisponibilidade
-                char *opcoesIndisponivel[] = {
-                    "Continuar com a compra",
-                    "Ir para o pagamento",
-                    "Cancelar compra",
-                    "Sair"
-                };
-                int num_opcoes_indisponivel = 4;
-                int linha_inicial_menu_indisponivel = 12;
-                int opcao_indisponivel = menuSelecao(opcoesIndisponivel, num_opcoes_indisponivel, linha_inicial_menu_indisponivel);
-
-                switch (opcao_indisponivel) {
-                    case 1:
-                        // Continuar com a compra
-                        continue;
-                    case 2:
-                        // Ir para o pagamento
-                        goto pagamento;
-                    case 3:
-                        // Cancelar venda
-                        total_compra = 0.0f;
-                        lista_produtos_ids[0] = '\0'; // Limpa a lista de produtos
-                        num_compra_produtos = 0;
-                        printf("Compra cancelada.\n");
-                        _getch();
-                        continuar = 0;
-                        break;
-                    case 4:
-                        // Sair
-                        continuar = 0;
-                        break;
-                    default:
-                        // Opção inválida
-                        continue;
-                }
-                continue;
-            }
-
             // Adiciona ou atualiza o produto em compra_produtos[]
             int encontrado = 0;
             for (int i = 0; i < num_compra_produtos; i++) {
@@ -247,7 +200,7 @@ int compra(int id_funcionario) {
             }
 
             // Calcula o subtotal
-            float subtotal = produto->preco_venda * quantidade;
+            float subtotal = produto->preco_compra * quantidade;
 
             // Atualiza o total da compra
             total_compra += subtotal;
@@ -302,7 +255,7 @@ int compra(int id_funcionario) {
             printf("   ║        Produto Não Encontrado!          ║\n");
             printf("   ║ Pressione qualquer tecla para continuar ║\n");
             printf("   ╚═════════════════════════════════════════╝\n");
-            _getch(); // Aguarda uma tecla ser pressionada
+            _getch(); // vai esperar qualquer tecla ser pressionada
         }
     }
 
@@ -311,11 +264,10 @@ pagamento:
     // Verifica se há produtos na compra
     if (num_compra_produtos > 0) {
         // Atualizar estoque
-        atualizarEstoque(produtos, num_produtos, compra_produtos, num_compra_produtos);
+        atualizarEstoque(produtos, num_produtos, compra_produtos, num_compra_produtos, 1);
 
         // Gerar lista_produtos_ids
         // Calcula o tamanho necessário para a string
-        // Estima o tamanho máximo: cada produto pode ocupar até 20 caracteres (id:quantidade|)
         int tamanho_necessario = num_compra_produtos * 20;
         if (strlen(lista_produtos_ids) + tamanho_necessario >= max_lista_produtos_ids) {
             // Realoca para evitar overflow
