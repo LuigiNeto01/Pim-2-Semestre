@@ -141,7 +141,7 @@ int carregar_produtos(Produto produtos[]) {
     return count;
 }
 
-// Função para desenhar uma caixa na tela
+// Função para desenhar a caixa na tela
 void desenhar_caixa(int x1, int y1, int x2, int y2) {
     int i;
     gotoxy(x1, y1); printf("╔");
@@ -175,32 +175,52 @@ void dashboard(int id_funcionario) {
     int total_produtos = carregar_produtos(produtos);
     int total_vendas = carregar_vendas(vendas);
 
+    if (total_produtos == 0 || total_vendas == 0) {
+        printf("Erro ao carregar os dados.\n");
+        mostrar_cursor();
+        system("pause");
+        return;
+    }
+
     float total_vendas_func = 0;
     int num_transacoes_func = 0;
     float media_venda_func = 0;
+    float custo_total = 0; // Para calcular o custo das vendas
     int qtd_produtos_vendidos[MAX_PRODUTOS] = {0};
     int i, j;
 
+    // Se for administrador, considerar todas as vendas da empresa
+    int considerar_todas_vendas = (id_funcionario == 1);
+
     // Cálculos para funcionário específico ou administrador
     for (i = 0; i < total_vendas; i++) {
-        if (id_funcionario == 1 || vendas[i].id_funcionario == id_funcionario) {
+        // Verifica se deve considerar a venda
+        if (considerar_todas_vendas || vendas[i].id_funcionario == id_funcionario) {
             if (vendas[i].modalidade == 1) { // Somente vendas
                 total_vendas_func += vendas[i].preco_venda;
                 num_transacoes_func++;
-            }
 
-            // Processar produtos e quantidades
-            char produtos_qnt[500];
-            strcpy(produtos_qnt, vendas[i].produtos_qnt);
+                // Processar produtos e quantidades
+                char produtos_qnt[500];
+                strcpy(produtos_qnt, vendas[i].produtos_qnt);
 
-            char *token = strtok(produtos_qnt, "|");
-            while (token != NULL) {
-                int id_prod;
-                float qtd;
-                sscanf(token, "%d:%f", &id_prod, &qtd);
-                qtd_produtos_vendidos[id_prod - 1] += qtd;
+                char *token = strtok(produtos_qnt, "|");
+                while (token != NULL) {
+                    int id_prod;
+                    float qtd;
+                    sscanf(token, "%d:%f", &id_prod, &qtd);
+                    qtd_produtos_vendidos[id_prod - 1] += qtd;
 
-                token = strtok(NULL, "|");
+                    // Calcular o custo total (preco_compra * quantidade vendida)
+                    for (j = 0; j < total_produtos; j++) {
+                        if (produtos[j].id_produto == id_prod) {
+                            custo_total += produtos[j].preco_compra * qtd;
+                            break;
+                        }
+                    }
+
+                    token = strtok(NULL, "|");
+                }
             }
         }
     }
@@ -258,7 +278,17 @@ void dashboard(int id_funcionario) {
     // Modalidade de Vendas
     int vendas_online = 0, vendas_presencial = 0;
     for (i = 0; i < total_vendas; i++) {
-        if (id_funcionario == 1 || vendas[i].id_funcionario == id_funcionario) {
+        // Se for administrador, considera todas as vendas
+        if (id_funcionario == 1) {
+            if (vendas[i].modalidade == 1) { // Somente vendas
+                if (strcmp(vendas[i].tipo, "Online") == 0)
+                    vendas_online++;
+                else if (strcmp(vendas[i].tipo, "Presencial") == 0)
+                    vendas_presencial++;
+            }
+        } 
+        // Se for funcionário comum, filtra pelas vendas do ID do funcionário
+        else if (vendas[i].id_funcionario == id_funcionario) {
             if (vendas[i].modalidade == 1) { // Somente vendas
                 if (strcmp(vendas[i].tipo, "Online") == 0)
                     vendas_online++;
@@ -320,30 +350,49 @@ void dashboard(int id_funcionario) {
             }
         }
 
-        gotoxy(48, 4);
+        gotoxy(40, 4);
         printf("Vendas por Funcionario:");
         for (i = 0; i < count_funcionarios; i++) {
-            gotoxy(50, 5 + i);
+            gotoxy(42, 5 + i);
             printf("ID %d - R$ %.2f", vendas_funcionarios[i].id_funcionario, vendas_funcionarios[i].total_vendas);
         }
 
         // Produtos com baixo estoque
-        gotoxy(48, 10);
+        gotoxy(40, 10);
         printf("Produtos com Baixo Estoque:");
         int linha = 11;
         for (i = 0; i < total_produtos; i++) {
             if (produtos[i].quantidade_estoque < 50) {
-                gotoxy(50, linha++);
+                gotoxy(42, linha++);
                 printf("%s - %d unidades", produtos[i].nome_item, produtos[i].quantidade_estoque);
             }
         }
+
+        // Dados Financeiros
+        float lucro = total_vendas_func - custo_total;
+
+        gotoxy(40, 16);
+        printf("Dados Financeiros:");
+        gotoxy(42, 17);
+        printf("Receita Total: R$ %.2f", total_vendas_func);
+        gotoxy(42, 18);
+        printf("Custo Total: R$ %.2f", custo_total);
+        gotoxy(42, 19);
+        printf("Lucro: R$ %.2f", lucro);
+
+        // Mensagem explicativa
+        gotoxy(0, 25);
+        printf("   ╔════════════════════════════════════════════════════════════════════╗\n");
+        printf("   ║     Obs: Receita Total é a soma de todas as vendas realizadas.     ║\n");
+        printf("   ║    Custo Total é o total gasto na compra dos produtos vendidos.    ║\n");
+        printf("   ║     Lucro é a diferença entre a Receita Total e o Custo Total.     ║\n");
+        printf("   ║                                                                    ║\n");
+        printf("   ║              Pressione qualquer tecla para continuar               ║\n");
+        printf("   ╚════════════════════════════════════════════════════════════════════╝\n");
     }
 
-    gotoxy(4, 22);
-    printf("Pressione Enter para voltar...");
-
-    gotoxy(0, 25);
-    mostrar_cursor();
+    // gotoxy(4, 24);
+    // printf("Pressione Enter para voltar...");
     // Esperar o usuário pressionar Enter
     while(getch() != 13); // 13 é o código ASCII para Enter
 }

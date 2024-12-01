@@ -468,13 +468,18 @@ int verificarDisponibilidade(Produto produtos[], int num_produtos, int id_produt
 }
 
 // Função para atualizar o estoque após a efetivação da compra
-void atualizarEstoque(Produto produtos[], int num_produtos, ProdutoCompra compra_produtos[], int num_compra_produtos) {
+// Função para atualizar o estoque após a efetivação da compra ou venda
+void atualizarEstoque(Produto produtos[], int num_produtos, ProdutoCompra compra_produtos[], int num_compra_produtos, int isCompra) {
     for (int i = 0; i < num_compra_produtos; i++) {
         Produto *produto = buscarProduto(produtos, num_produtos, compra_produtos[i].id_produto);
         if (produto) {
-            produto->quantidade_estoque -= compra_produtos[i].quantidade;
-            if (produto->quantidade_estoque < 0) {
-                produto->quantidade_estoque = 0; // Garantir que não fique negativo
+            if (isCompra) {
+                produto->quantidade_estoque += compra_produtos[i].quantidade; // Adicionar ao estoque
+            } else {
+                produto->quantidade_estoque -= compra_produtos[i].quantidade; // Subtrair do estoque
+                if (produto->quantidade_estoque < 0) {
+                    produto->quantidade_estoque = 0; // Garantir que não fique negativo
+                }
             }
         }
     }
@@ -793,7 +798,7 @@ pagamento:
     // Verifica se há produtos na compra
     if (num_compra_produtos > 0) {
         // Atualizar estoque
-        atualizarEstoque(produtos, num_produtos, compra_produtos, num_compra_produtos);
+        atualizarEstoque(produtos, num_produtos, compra_produtos, num_compra_produtos, 0);
 
         // Gerar lista_produtos_ids
         // Calcula o tamanho necessário para a string

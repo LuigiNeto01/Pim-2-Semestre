@@ -48,7 +48,7 @@ int selecionarTipoVenda(char *tipo, int ascii);
 int lerProdutos(Produto produtos[], int max_produtos);
 Produto* buscarProduto(Produto produtos[], int num_produtos, int id_produto);
 int verificarDisponibilidade(Produto produtos[], int num_produtos, int id_produto, float quantidade_requerida, ProdutoCompra compra_produtos[], int num_compra_produtos);
-void atualizarEstoque(Produto produtos[], int num_produtos, ProdutoCompra compra_produtos[], int num_compra_produtos);
+void atualizarEstoque(Produto produtos[], int num_produtos, ProdutoCompra compra_produtos[], int num_compra_produtos, int isCompra);
 void salvar_venda_csv(int id_funcionario, double valor_venda, const char *lista_produtos, const char *tipo, const char *cpf);
 void adicionar_produto_venda(char *lista_produtos_ids, int id_produto, float quantidade);
 
