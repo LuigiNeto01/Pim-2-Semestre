@@ -13,7 +13,9 @@
 #include "src/venda.c"
 #include "src/fluxo_estoque.c"
 #include "src/fluxo_caixa.c"
+#include "src/dashboard.c"
 #include "src/cadastrar_funcionario.c"
+
 
 // Função para exibir o menu e retornar a opção selecionada
 int exibir_menu(int login_resultado) {
@@ -111,7 +113,7 @@ int main() {
                     break;
                 case 4:
                     // Função ou código para Dashboards
-                    printf("Funcionalidade Dashboards não implementada.\n");
+                    dashboard(login_resultado);
                     break;
                 case 5:
                     // Função ou código para Avisos

@@ -21,6 +21,16 @@ typedef struct {
 } Produto;
 
 typedef struct {
+    char timestamp[20];
+    int id_funcionario;
+    float preco_venda;
+    char produtos_qnt[500];
+    char tipo[20];
+    char cpf[20];
+    int modalidade;
+} Venda;
+
+typedef struct {
     int id_produto;
     float quantidade;
 } ProdutoCompra;

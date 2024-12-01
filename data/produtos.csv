@@ -4,9 +4,9 @@ id_produto;nome_item;tipo;preco_venda;preco_compra;validade;unidade_medida;valor
 3;Ervilha;Pimenta;13,54;10,80;60;g;Baixo;150;0,1
 4;Maçã Verde;Raiz;10,36;8,00;45;Caixa;Médio;80;0,7
 5;Damasco;Fruta;15,69;12,50;7;Kg;Baixo;50;0,3
-6;Couve-flor;Fruta;6,40;5,10;15;kg;Médio;75;0,4
-7;Mamão;Vegetal;4,59;3,30;15;Caixa;Alto;90;0,6
-8;Alecrim;Raiz;1,73;1,30;15;Kg;Médio;200;0,1
+6;Couve-flor;Fruta;6,40;5,10;15;kg;Médio;5;0,4
+7;Mamão;Vegetal;4,59;3,30;15;Caixa;Alto;1;0,6
+8;Alecrim;Raiz;1,73;1,30;15;Kg;Médio;0;0,1
 9;Salada Mista;Pimenta;14,88;12,00;7;Saco;Médio;100;0,5
 10;Acelga Verde;Pimenta;3,50;2,80;15;Kg;Médio;250;0,2
 11;Beringela;Raiz;3,32;2,50;30;Caixa;Médio;130;0,4
@@ -99,5 +99,4 @@ id_produto;nome_item;tipo;preco_venda;preco_compra;validade;unidade_medida;valor
 98;Abacaxi;Fruta;7,35;5,80;7;Caixa;Alto;200;0,6
 99;Macadâmia;Vegetal;8,71;6,80;7;Caixa;Médio;130;0,3
 100;Uva;Semente;8,01;6,20;7;Kg;Baixo;220;0,2
-101;Ricardo;Humano;500.00;300.50;80;m;Alto;0;2.00
-102;Emir;Animal;1.00;0.15;curta;10;alto;0;23.00
+
