@@ -94,7 +94,7 @@ void exibir_fluxo_estoque() {
                 strcpy(modalidade_str, "Venda");
                 break;
             case 0:
-                strcpy(modalidade_str, "Doação");
+                strcpy(modalidade_str, "Doação      ");
                 break;
             case 2:
                 strcpy(modalidade_str, "Compra");
@@ -154,7 +154,7 @@ void exibir_fluxo_estoque() {
 
         // Se não houver produtos, ainda imprimir a linha
         if (produtos_count == 0) {
-            printf("║ %-20s │ %-10d │ %-12.2f │ %-41s │ %-10s │ %-16s │ %-12s ║\n",
+            printf("║ %-20s │ %-10d │ %-12.2f │ %-41s │ %-10s │ %-16s │ %-10s ║\n",
                    data, id_funcionario, preco_venda, "", tipo, cpf, modalidade_str);
         }
         // Imprimir uma linha separadora
