@@ -44,7 +44,7 @@ void capturarEntradaNumerica(char *destino, int tamanho_maximo);
 void capturarCPF(char *cpf_formatted);
 
 // Operações de Venda
-void selecionarTipoVenda(char *tipo, int ascii);
+int selecionarTipoVenda(char *tipo, int ascii);
 int lerProdutos(Produto produtos[], int max_produtos);
 Produto* buscarProduto(Produto produtos[], int num_produtos, int id_produto);
 int verificarDisponibilidade(Produto produtos[], int num_produtos, int id_produto, float quantidade_requerida, ProdutoCompra compra_produtos[], int num_compra_produtos);

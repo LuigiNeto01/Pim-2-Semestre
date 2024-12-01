@@ -173,12 +173,16 @@ void capturarCPF(char *cpf_formatted) {
 }
 
 // Função para selecionar o tipo de venda (Presencial ou Online)
-void selecionarTipoVenda(char *tipo, int ascii) {
+int selecionarTipoVenda(char *tipo, int ascii) {
     int selecionado = 1; // 1 para Presencial, 2 para Online
     int ch;
 
     system("cls");
     Ascii(ascii);
+    printf("   ╔═════════════════════════════════════════════════════════════════════════╗\n");
+    printf("   ║ \033[1;33mSerá cobrada uma taxa de frete de R$15,00 para todos os pedidos online  \033[0m║\n");
+    printf("   ╚═════════════════════════════════════════════════════════════════════════╝\n");
+    printf("\n");
     printf("   ╔═══════════════════════════════════╗\n");
     printf("   ║                                   ║\n");
     printf("   ╚═══════════════════════════════════╝\n");
@@ -186,7 +190,7 @@ void selecionarTipoVenda(char *tipo, int ascii) {
 
     while (1) {
         // Exibe as opções com os símbolos ▢ e ▣
-        gotoxy(7, 9);
+        gotoxy(7, 13);
         printf("%s Presencial   \t%s Online  ", (selecionado == 1 ? "▣" : "▢"), (selecionado == 2 ? "▣" : "▢"));
 
         ch = _getch();
@@ -194,8 +198,10 @@ void selecionarTipoVenda(char *tipo, int ascii) {
             ch = _getch();
             if (ch == 75) { // Seta para a esquerda
                 selecionado = 1;
+                return 0;
             } else if (ch == 77) { // Seta para a direita
                 selecionado = 2;
+                
             }
         } else if (ch == 13) { // Enter pressionado
             break;
@@ -207,8 +213,15 @@ void selecionarTipoVenda(char *tipo, int ascii) {
         strcpy(tipo, "Presencial");
     } else {
         strcpy(tipo, "Online");
+        
     }
     mostrar_cursor();
+
+    if(selecionado==2){
+        return 15;
+    } else {
+        return 0;
+    }
 }
 
 // Função para ler os produtos de um arquivo CSV
@@ -562,7 +575,7 @@ int venda(int id_funcionario) {
     }
 
     // Seleciona o tipo de venda
-    selecionarTipoVenda(tipo_venda, 5);
+    int frete = selecionarTipoVenda(tipo_venda, 5);
 
     // Limpa a tela e exibe a arte ASCII
     system("cls");
@@ -813,7 +826,7 @@ pagamento:
         }
 
         // Salva os dados no CSV
-        salvar_venda_csv(id_funcionario, total_compra, lista_produtos_ids, tipo_venda, cpf_formatted);
+        salvar_venda_csv(id_funcionario, total_compra+frete, lista_produtos_ids, tipo_venda, cpf_formatted);
         continuar = 0;
     } else {
         // Nenhum produto na compra
@@ -833,7 +846,7 @@ pagamento:
         printf("   ║      Pressione qualquer tecla para continuar       ║\n");
         printf("   ╚════════════════════════════════════════════════════╝\n");
         gotoxy(42, 9);
-        printf("%.2f", total_compra);
+        printf("%.2f", (total_compra + frete));
         _getch();
     } else {
         printf("   ╔══════════════════════════════════════════════╗\n");

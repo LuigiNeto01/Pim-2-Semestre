@@ -36,7 +36,7 @@ int exibir_menu(int login_resultado) {
     printf("║      *Escolha uma opção*       ║\n");
     printf("║~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~║\n");
     printf("║    1- Fluxo de Caixa           ║\n");
-    printf("║    2- Tabela de Produtos       ║\n");
+    printf("║    2- Movimentação do estoque  ║\n");
     printf("║    3- Cadastrar Produtos       ║\n");
     printf("║    4- Dashboards               ║\n");
     printf("║    5- Avisos                   ║\n");
