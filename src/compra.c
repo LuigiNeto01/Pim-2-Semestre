@@ -92,28 +92,6 @@ int compra(int id_funcionario) {
         return 1;
     }
 
-    // Seleciona o tipo de venda
-    selecionarTipoVenda(tipo_venda, 9);
-
-    // Limpa a tela e exibe a arte ASCII
-    system("cls");
-    Ascii(9);
-
-    // Exibe a caixa para inserir o CPF do cliente
-    printf("   ╔═══════════════════════════════════════════╗\n");
-    printf("   ║          Insira o CPF do cliente          ║\n");
-    printf("   ║                    ou                     ║\n");
-    printf("   ║     Pressione Enter para Não Utilizar     ║\n");
-    printf("   ╚═══════════════════════════════════════════╝\n");
-
-    // Exibe o placeholder para o CPF
-    printf("   ╔═════════════════════════════════════╗\n");
-    printf("   ║  CPF: ___.___.___-__                ║\n");
-    printf("   ╚═════════════════════════════════════╝\n");
-
-    // Obtém o CPF do usuário
-    capturarCPF(cpf_formatted);
-
     // Loop principal da venda
     while (continuar) {
         system("cls");
