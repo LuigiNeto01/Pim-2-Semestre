@@ -79,23 +79,3 @@ id_produto;nome_item;tipo;preco_venda;preco_compra;validade;unidade_medida;valor
 78;Ervilha;Vegetal;7,55;5,80;30;Kg;Alto;180;0,30
 79;Rúcula;Fruta;12,03;9,50;45;Kg;Médio;90;0,20
 80;Carambola;Raiz;11,95;9,30;15;Saco;Alto;70;0,50
-81;Tomate Cereja;Fruta;5,20;4,10;30;Kg;Alto;100;0,60
-82;Brócolis;Erva;17,36;14,00;60;Caixa;Alto;130;0,40
-83;Acelga Verde;Semente;5,78;4,50;7;Kg;Alto;150;0,30
-84;Manga;Erva;13,55;10,80;30;Kg;Baixo;110;0,20
-85;Laranja;Fruta;17,59;14,00;7;Caixa;Alto;130;0,50
-86;Morango;Erva;15,11;12,20;60;Kg;Médio;90;0,40
-87;Beringela;Fruta;11,22;8,90;30;Saco;Alto;200;0,60
-88;Rabanete;Raiz;12,27;9,80;30;Saco;Baixo;80;0,40
-89;Laranja;Folha;18,15;14,30;15;Kg;Baixo;70;0,30
-90;Milho;Erva;8,80;6,90;7;Caixa;Alto;150;0,70
-91;Romã;Semente;13,44;10,60;30;Caixa;Baixo;140;0,50
-92;Mamão;Fruta;9,40;7,50;30;Kg;Alto;200;0,40
-93;Mangostão;Legume;12,49;9,80;60;Saco;Alto;160;0,30
-94;Brócolis;Semente;19,83;15,80;30;Kg;Baixo;110;0,20
-95;Acerola;Folha;4,01;3,10;30;Caixa;Médio;180;0,40
-96;Rabanete;Raiz;16,59;13,20;60;Caixa;Alto;100;0,30
-97;Carambola;Folha;11,83;9,50;45;Caixa;Médio;90;0,50
-98;Abacaxi;Fruta;7,35;5,80;7;Caixa;Alto;200;0,60
-99;Macadâmia;Vegetal;8,71;6,80;7;Caixa;Médio;130;0,30
-100;Uva;Semente;8,01;6,20;7;Kg;Baixo;220;0,20
