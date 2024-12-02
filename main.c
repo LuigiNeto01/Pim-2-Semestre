@@ -38,8 +38,8 @@ int exibir_menu(int login_resultado) {
     printf("║    1- Fluxo de Caixa           ║\n");
     printf("║    2- Movimentação do estoque  ║\n");
     printf("║    3- Cadastrar Produtos       ║\n");
-    printf("║    4- Dashboards               ║\n");
-    printf("║    5- Avisos                   ║\n");
+    printf("║    4- Tabela Produtos          ║\n");
+    printf("║    5- Dashboards               ║\n");
     printf("║    6- Sair                     ║\n");
     if(login_resultado == 1){
         printf("║    7- Cadastrar funcionários   ║\n");
@@ -112,12 +112,10 @@ int main() {
                     cadastro_produto();
                     break;
                 case 4:
-                    // Função ou código para Dashboards
-                    dashboard(login_resultado);
+                    exibir_tabela();
                     break;
                 case 5:
-                    // Função ou código para Avisos
-                    printf("Funcionalidade Avisos não implementada.\n");
+                    dashboard(login_resultado);
                     break;
                 case 6:
                     system("cls");

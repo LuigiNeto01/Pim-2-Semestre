@@ -3,9 +3,29 @@
 #include <string.h>
 #include "components/ascii.h"
 
+// Função para contar o número de caracteres UTF-8
+int utf8_strlen(const char *s) {
+    int len = 0;
+    while (*s) {
+        if ((*s & 0xC0) != 0x80) len++;
+        s++;
+    }
+    return len;
+}
+
+// Função para imprimir uma string com padding baseado no número de caracteres
+void print_padded(const char *s, int width) {
+    fputs(s, stdout);
+    int len = utf8_strlen(s);
+    for(int i = len; i < width; i++) {
+        fputc(' ', stdout);
+    }
+}
+
 void exibir_tabela() {
+    system("chcp 65001 > nul"); // Define a página de código para UTF-8 silenciosamente
     system("cls");
-    Ascii(4);
+    Ascii(3);
     char cwd[1024];
     char caminho_arquivo[2048];
     char linha[1024];
@@ -27,9 +47,16 @@ void exibir_tabela() {
     }
 
     // Exibir cabeçalho da tabela
-    printf("╔══════╦════════════════════╦════════════════╦════════════╦═════════════╦════════════════╦════════════════════╗\n");
-    printf("║ ID   │ Nome Item          │ Tipo           │ Preço      │ Validade    │ Unidade Medida │ Valor Nutricional  ║\n");
-    printf("╟──────┼────────────────────┼────────────────┼────────────┼─────────────┼────────────────┼────────────────────╢\n");
+    printf("╔══════╦════════════════════╦════════════════╦════════════╦═════════════╦════════════════╗\n");
+    printf("║ ID   │ Nome Item          │ Tipo           │ Preço      │ Validade    │ Unidade Medida ║\n");
+    printf("╟──────┼────────────────────┼────────────────┼────────────┼─────────────┼────────────────╢\n");
+
+    // Ler e descartar a primeira linha (cabeçalho)
+    if (fgets(linha, sizeof(linha), arquivo) == NULL) {
+        // Se não houver linhas no arquivo, simplesmente retorna
+        fclose(arquivo);
+        return;
+    }
 
     // Ler cada linha do arquivo e exibir
     while (fgets(linha, sizeof(linha), arquivo) != NULL) {
@@ -40,15 +67,28 @@ void exibir_tabela() {
         sscanf(linha, "%d;%49[^;];%19[^;];%19[^;];%19[^;];%19[^;];%19[^\n]", 
                &id_produto, nome_item, tipo, preco, validade, unidade_medida, valor_nutricional);
 
-        // Exibir linha formatada
-        printf("║ %-4d │ %-18s │ %-14s │ %-10s │ %-11s │ %-14s │ %-16s ║\n", 
-               id_produto, nome_item, tipo, preco, validade, unidade_medida, valor_nutricional);
+        // Exibir linha formatada com bordas
+        printf("║ ");
+        printf("%-4d │ ", id_produto);
+        print_padded(nome_item, 18);
+        printf(" │ ");
+        print_padded(tipo, 14);
+        printf(" │ ");
+        print_padded(preco, 10);
+        printf(" │ ");
+        print_padded(validade, 11);
+        printf(" │ ");
+        print_padded(unidade_medida, 14);
+        printf(" ║\n");
+        
+        // Imprimir a linha separadora
+        printf("╟──────┼────────────────────┼────────────────┼────────────┼─────────────┼────────────────╢\n");
     }
 
     // Fechar o arquivo
     fclose(arquivo);
 
     // Exibir rodapé da tabela
-    printf("╚══════╩════════════════════╩════════════════╩════════════╩═════════════╩════════════════╩════════════════════╝\n");
+    printf("╚══════╩════════════════════╩════════════════╩════════════╩═════════════╩════════════════╝\n");
     _getch();
 }
